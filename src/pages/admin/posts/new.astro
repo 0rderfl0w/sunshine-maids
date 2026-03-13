@@ -166,8 +166,9 @@ const error = Astro.url.searchParams.get('error');
   const coverError = document.getElementById('cover-upload-error') as HTMLParagraphElement;
   const form = document.getElementById('post-form') as HTMLFormElement;
 
-  const SUPABASE_URL = 'https://cmpdoonysjbnjlykwwyg.supabase.co';
-  const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNtcGRvb255c2pibmpseWt3d3lnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM0MTAyMzYsImV4cCI6MjA4ODk4NjIzNn0.jW6q0sLfy2rCTY84uJnZiz9SqpFoC33DrYjRr9I51Qo';
+  // Use the existing browser Supabase client (picks up auth session from cookies)
+  import { createBrowserSupabaseClient } from '../../lib/supabase';
+  const supabase = createBrowserSupabaseClient();
 
   coverInput?.addEventListener('change', async () => {
     const file = coverInput.files?.[0];
@@ -192,32 +193,29 @@ const error = Astro.url.searchParams.get('error');
 
     coverError.classList.add('hidden');
 
-    // Upload to Supabase storage
+    // Upload to Supabase storage using authenticated session
     try {
       const ext = file.name.split('.').pop();
       const fileName = crypto.randomUUID() + '.' + ext;
       
-      // Upload file
-      const uploadRes = await fetch(
-        `${SUPABASE_URL}/storage/v1/object/blog-images/${fileName}`,
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': file.type,
-            'Authorization': `Bearer ${SUPABASE_ANON_KEY}`
-          },
-          body: file
-        }
-      );
+      const { data, error } = await supabase.storage
+        .from('blog-images')
+        .upload(fileName, file, {
+          contentType: file.type,
+          upsert: false
+        });
 
-      if (!uploadRes.ok) {
-        throw new Error('Upload failed');
+      if (error) {
+        throw error;
       }
 
       // Get public URL
-      const publicUrl = `${SUPABASE_URL}/storage/v1/object/public/blog-images/${fileName}`;
-      coverHiddenInput.value = publicUrl;
-      console.log('Cover image uploaded:', publicUrl);
+      const { data: urlData } = supabase.storage
+        .from('blog-images')
+        .getPublicUrl(fileName);
+      
+      coverHiddenInput.value = urlData.publicUrl;
+      console.log('Cover image uploaded:', urlData.publicUrl);
     } catch (e) {
       console.error('Upload error:', e);
       coverError.textContent = 'Failed to upload image. Please try again.';

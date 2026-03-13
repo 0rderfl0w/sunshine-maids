@@ -19,8 +19,11 @@ export default function TiptapEditor({ initialContent = '', postId = 'new', hidd
     if (initialContent && initialContent.trim()) {
       return initialContent;
     }
-    const saved = localStorage.getItem(getDraftKey());
-    return saved || '';
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem(getDraftKey());
+      return saved || '';
+    }
+    return '';
   };
 
   const editor = useEditor({

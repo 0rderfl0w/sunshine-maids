@@ -117,7 +117,7 @@ const error = Astro.url.searchParams.get('error');
           <label class="block text-sm font-medium text-gray-700 mb-1">
             Content
           </label>
-          <TiptapEditor client:load postId="new" hiddenInputId="body_html" />
+          <TiptapEditor client:only="react" postId="new" hiddenInputId="body_html" />
           <input type="hidden" id="body_html" name="body_html" value="" />
         </div>
       </div>

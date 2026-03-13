@@ -177,7 +177,7 @@ if (!post) {
             Content
           </label>
           <TiptapEditor 
-            client:load 
+            client:only="react" 
             postId={post.id}
             initialContent={post.body_html || ''}
             hiddenInputId="body_html"

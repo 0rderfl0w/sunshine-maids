@@ -30,7 +30,7 @@ export async function GET({ cookies }: APIContext) {
       });
 
       const { data } = await supabase
-        .from('blog_posts')
+        .from('posts')
         .select('slug, updated_at')
         .eq('status', 'published')
         .order('published_at', { ascending: false });

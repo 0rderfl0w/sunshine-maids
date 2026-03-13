@@ -1,0 +1,12 @@
+# Placeholder for Open Graph default image
+# 
+# This should be a 1200x630px branded image for social sharing.
+# Nick or Z will need to generate this from the Guardian Cleaners logo.
+#
+# Recommended: Use a tool like Canva or Figma to create an OG image with:
+# - Guardian Cleaners logo
+# - Tagline: "Professional Cleaning Services in Oklahoma City"
+# - Brand colors: #F56C7E (pink/coral)
+# - Dimensions: 1200x630px
+#
+# Save as: public/og-default.jpg

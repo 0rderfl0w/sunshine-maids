@@ -29,6 +29,12 @@ export default function TiptapEditor({ initialContent = '', postId = 'new', hidd
   const editor = useEditor({
     extensions: TIPTAP_EXTENSIONS,
     content: getInitialContent(),
+    onCreate: ({ editor }) => {
+      // Sync hidden input on initial mount (covers localStorage draft restore)
+      const html = editor.getHTML();
+      const hiddenInput = document.getElementById(hiddenInputId) as HTMLInputElement | null;
+      if (hiddenInput && html && html !== '<p></p>') hiddenInput.value = html;
+    },
     onUpdate: ({ editor }) => {
       const html = editor.getHTML();
       // Sync to hidden form input (can't pass functions across Astro island boundary)

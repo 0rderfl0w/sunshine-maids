@@ -31,3 +31,4 @@ bun-debug.log*
 
 # Testing
 coverage/
+.vercel

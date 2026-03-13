@@ -37,7 +37,7 @@ export async function POST(context: APIContext) {
         title,
         slug,
         excerpt: excerpt || null,
-        body_html: body_html || null,
+        body_html: body_html || '',
         cover_image: cover_image || null,
         published,
         published_at: published ? new Date().toISOString() : null,

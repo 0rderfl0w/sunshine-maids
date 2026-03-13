@@ -12,6 +12,7 @@ const services = [
       "Thoroughly cleaning kitchen areas",
       "Attention to often-forgotten nooks and crannies"
     ],
+    image: "/images/service-basic.jpg",
     alt: "Basic house cleaning in Oklahoma City, OK — Guardian Cleaners"
   },
   {
@@ -24,6 +25,7 @@ const services = [
       "Bathroom revival - grout lines and shower fixtures",
       "Floor perfection - tile, wood, and carpet"
     ],
+    image: "/images/service-deep.jpg",
     alt: "Deep house cleaning in Oklahoma City, OK — Guardian Cleaners"
   },
   {
@@ -36,6 +38,7 @@ const services = [
       "Floor care - all surfaces",
       "Window cleaning"
     ],
+    image: "/images/service-movein.jpg",
     alt: "Move-in/move-out cleaning in Oklahoma City, OK — Guardian Cleaners"
   },
   {
@@ -47,6 +50,7 @@ const services = [
       "Consistent quality",
       "Reliable and courteous professionals"
     ],
+    image: "/images/service-recurring.jpg",
     alt: "Recurring maid services in Oklahoma City, OK — Guardian Cleaners"
   },
   {
@@ -59,6 +63,7 @@ const services = [
       "Inspection and restocking supplies",
       "Trash removal and bin lining"
     ],
+    image: "/images/service-airbnb.jpg",
     alt: "Airbnb cleaning in Oklahoma City, OK — Guardian Cleaners"
   },
   {
@@ -70,6 +75,7 @@ const services = [
       "Flexible scheduling",
       "Professional and reliable staff"
     ],
+    image: "/images/service-commercial.jpg",
     alt: "Commercial cleaning in Oklahoma City, OK — Guardian Cleaners"
   },
   {
@@ -82,6 +88,7 @@ const services = [
       "Floor care and polishing",
       "Final detail work"
     ],
+    image: "/images/service-construction.jpg",
     alt: "Post-construction cleaning in Oklahoma City, OK — Guardian Cleaners"
   }
 ];
@@ -110,12 +117,14 @@ const services = [
       <div class="space-y-16">
         {services.map((service, index) => (
           <div class="flex flex-col lg:flex-row gap-8 items-start">
-            <!-- Service Image Placeholder -->
+            <!-- Service Image -->
             <div class="w-full lg:w-1/3">
-              <div class="w-full aspect-video bg-gray-100 rounded-xl flex items-center justify-center">
-                <svg class="w-20 h-20 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-                </svg>
+              <div class="w-full aspect-video rounded-xl overflow-hidden">
+                <img 
+                  src={service.image} 
+                  alt={service.alt}
+                  class="w-full h-full object-cover"
+                />
               </div>
             </div>
             

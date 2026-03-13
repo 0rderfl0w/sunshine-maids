@@ -257,7 +257,7 @@ const error = Astro.url.searchParams.get('error');
       coverPreviewImg.src = urlData.publicUrl;
       coverPreview.classList.remove('hidden');
     } catch (e) {
-      console.error('Upload error:', e);
+      console.error('Cover image upload error:', e);
       coverUploading.classList.add('hidden');
       coverError.textContent = 'Failed to upload image. Please try again.';
       coverError.classList.remove('hidden');

@@ -95,6 +95,20 @@ const error = Astro.url.searchParams.get('error');
             JPEG, PNG, or WebP. Max 5MB. Recommended size: 1200×675.
           </p>
           <p id="cover-upload-error" class="mt-1 text-sm text-red-600 hidden"></p>
+          <p id="cover-upload-success" class="mt-1 text-sm text-green-600 hidden flex items-center gap-1">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+            <span>Image uploaded successfully</span>
+          </p>
+          <div id="cover-preview" class="mt-2 hidden">
+            <div class="relative inline-block">
+              <img id="cover-preview-img" src="" alt="Cover preview" class="h-32 w-auto rounded-lg border border-gray-200 object-cover" />
+              <button type="button" id="cover-remove-btn" class="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm hover:bg-red-600 shadow-sm" title="Remove image">&times;</button>
+            </div>
+          </div>
+          <div id="cover-uploading" class="mt-2 hidden flex items-center gap-2 text-sm text-gray-500">
+            <svg class="animate-spin h-4 w-4 text-blue-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path></svg>
+            Uploading...
+          </div>
           <input type="hidden" id="cover_image" name="cover_image" value="" />
         </div>
 
@@ -164,15 +178,35 @@ const error = Astro.url.searchParams.get('error');
   const coverInput = document.getElementById('cover_image_file') as HTMLInputElement;
   const coverHiddenInput = document.getElementById('cover_image') as HTMLInputElement;
   const coverError = document.getElementById('cover-upload-error') as HTMLParagraphElement;
+  const coverSuccess = document.getElementById('cover-upload-success') as HTMLParagraphElement;
+  const coverPreview = document.getElementById('cover-preview') as HTMLDivElement;
+  const coverPreviewImg = document.getElementById('cover-preview-img') as HTMLImageElement;
+  const coverRemoveBtn = document.getElementById('cover-remove-btn') as HTMLButtonElement;
+  const coverUploading = document.getElementById('cover-uploading') as HTMLDivElement;
   const form = document.getElementById('post-form') as HTMLFormElement;
 
   // Use the existing browser Supabase client (picks up auth session from cookies)
   import { createBrowserSupabaseClient } from '../../../lib/supabase';
   const supabase = createBrowserSupabaseClient();
 
+  function resetCoverUI() {
+    coverError.classList.add('hidden');
+    coverSuccess.classList.add('hidden');
+    coverPreview.classList.add('hidden');
+    coverUploading.classList.add('hidden');
+  }
+
+  coverRemoveBtn?.addEventListener('click', () => {
+    resetCoverUI();
+    coverHiddenInput.value = '';
+    coverInput.value = '';
+  });
+
   coverInput?.addEventListener('change', async () => {
     const file = coverInput.files?.[0];
     if (!file) return;
+
+    resetCoverUI();
 
     // Validate file type
     const validTypes = ['image/jpeg', 'image/png', 'image/webp'];
@@ -191,7 +225,8 @@ const error = Astro.url.searchParams.get('error');
       return;
     }
 
-    coverError.classList.add('hidden');
+    // Show uploading spinner
+    coverUploading.classList.remove('hidden');
 
     // Upload to Supabase storage using authenticated session
     try {
@@ -215,9 +250,15 @@ const error = Astro.url.searchParams.get('error');
         .getPublicUrl(fileName);
       
       coverHiddenInput.value = urlData.publicUrl;
-      console.log('Cover image uploaded:', urlData.publicUrl);
+
+      // Show success + preview
+      coverUploading.classList.add('hidden');
+      coverSuccess.classList.remove('hidden');
+      coverPreviewImg.src = urlData.publicUrl;
+      coverPreview.classList.remove('hidden');
     } catch (e) {
       console.error('Upload error:', e);
+      coverUploading.classList.add('hidden');
       coverError.textContent = 'Failed to upload image. Please try again.';
       coverError.classList.remove('hidden');
       coverInput.value = '';

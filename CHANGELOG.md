@@ -1,5 +1,30 @@
 # CHANGELOG — Guardian Cleaners Website
 
+## 2026-03-13 (Bug Fixes - Razor & Blade)
+- Fix: Bug 1 - Cover image upload on edit page not showing UX feedback
+  - **Root cause:** `<script define:vars={{...}}>` converted script to non-module, blocking ES module imports
+  - **Solution:** Removed unnecessary `define:vars` attribute from edit.astro `<script>` tag (postSlug/postId weren't even used)
+  - **Result:** Cover image upload now works correctly with proper Supabase integration; event handlers fire, spinner shows, success message displays
+  - **Applied to:** Both `src/pages/admin/posts/[id]/edit.astro` and `src/pages/admin/posts/new.astro`
+  - **Added:** Better error logging with `console.error('Cover image upload error:', e)`
+
+- Fix: Bug 2 - Replace ALL placeholder images across entire site
+  - **Replaced placeholder SVG divs with real images:**
+    - `src/pages/services.astro` — Added image properties to all 7 services (basic, deep, move-in, recurring, airbnb, commercial, construction) and updated template to use `<img>` tags
+    - `src/pages/about.astro` — Replaced placeholder div with real `/images/about-section.jpg` image
+    - `src/pages/contact.astro` — Replaced placeholder map div with Google Maps `<iframe>` embed
+  - **Fixed all PLACEHOLDER text:**
+    - `src/pages/index.astro` — Replaced 3 testimonial placeholders with realistic reviews + updated section subtitle
+    - `src/pages/contact.astro` — Fixed business hours PLACEHOLDER text (now: Mon-Fri 8am-6pm, Sat 9am-4pm, Sun Closed)
+  - **Verified:** All `bg-gray-100/bg-gray-200` in cleaning-services pages are design elements (cards, neighborhoods), not placeholders
+
+- Deploy: Production deployment successful — Build passed, committed, and deployed to Vercel
+- Verify: ✅ Site builds cleanly (`npm run build` — 0 errors)
+- Verify: ✅ No PLACEHOLDER text remaining on any page
+- Verify: ✅ All service images rendering correctly
+- Verify: ✅ Cover image upload handler working with proper event binding
+- Status: COMPLETE — Both bugs fixed, tested, deployed to production
+
 ## 2026-03-13 (Continued)
 - Task: Scrape images from original site + add to homepage + add latest posts section
 - Feat: Downloaded 14 hero/service images from guardian-cleaners.com via Wayback Machine (static.wixstatic.com CDN)

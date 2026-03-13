@@ -63,6 +63,7 @@ async function handlePut(
   const slug = formData.get('slug')?.toString();
   const excerpt = formData.get('excerpt')?.toString();
   const body_html = formData.get('body_html')?.toString();
+  const cover_image = formData.get('cover_image')?.toString();
   const published = formData.get('published')?.toString() === 'true';
 
   if (!title || !slug) {
@@ -84,6 +85,7 @@ async function handlePut(
       slug,
       excerpt: excerpt || null,
       body_html: body_html || null,
+      cover_image: cover_image || null,
       published,
       updated_at: new Date().toISOString(),
     };

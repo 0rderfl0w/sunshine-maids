@@ -1,17 +1,41 @@
 import { useEditor, EditorContent } from '@tiptap/react';
 import { TIPTAP_EXTENSIONS } from '../lib/tiptap-extensions';
+import { useEffect, useState } from 'react';
 
 interface TiptapEditorProps {
   initialContent?: string;
+  postId?: string;
   onChange: (html: string) => void;
 }
 
-export default function TiptapEditor({ initialContent = '', onChange }: TiptapEditorProps) {
+export default function TiptapEditor({ initialContent = '', postId = 'new', onChange }: TiptapEditorProps) {
+  const [draftSaved, setDraftSaved] = useState(false);
+  
+  // Get draft key based on post ID
+  const getDraftKey = () => `guardian-draft-${postId}`;
+  
+  // Restore from localStorage if initialContent is empty
+  const getInitialContent = () => {
+    if (initialContent && initialContent.trim()) {
+      return initialContent;
+    }
+    const saved = localStorage.getItem(getDraftKey());
+    return saved || '';
+  };
+
   const editor = useEditor({
     extensions: TIPTAP_EXTENSIONS,
-    content: initialContent,
+    content: getInitialContent(),
     onUpdate: ({ editor }) => {
-      onChange(editor.getHTML());
+      const html = editor.getHTML();
+      onChange(html);
+      
+      // Auto-save to localStorage
+      localStorage.setItem(getDraftKey(), html);
+      
+      // Show draft saved indicator
+      setDraftSaved(true);
+      setTimeout(() => setDraftSaved(false), 1500);
     },
     editorProps: {
       attributes: {
@@ -124,6 +148,13 @@ export default function TiptapEditor({ initialContent = '', onChange }: TiptapEd
 
       {/* Editor Content */}
       <EditorContent editor={editor} />
+      
+      {/* Draft saved indicator */}
+      {draftSaved && (
+        <div className="absolute bottom-2 right-2 text-xs text-gray-500 bg-white/80 px-2 py-1 rounded">
+          Draft saved
+        </div>
+      )}
     </div>
   );
 }

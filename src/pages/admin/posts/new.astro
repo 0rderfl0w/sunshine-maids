@@ -102,6 +102,24 @@ const error = Astro.url.searchParams.get('error');
           ></textarea>
         </div>
 
+        {/* Cover Image */}
+        <div>
+          <label for="cover_image_file" class="block text-sm font-medium text-gray-700 mb-1">
+            Cover Image
+          </label>
+          <input
+            type="file"
+            id="cover_image_file"
+            accept="image/jpeg,image/png,image/webp"
+            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+          />
+          <p class="mt-1 text-sm text-gray-500">
+            JPEG, PNG, or WebP. Max 5MB. Recommended size: 1200×675.
+          </p>
+          <p id="cover-upload-error" class="mt-1 text-sm text-red-600 hidden"></p>
+          <input type="hidden" id="cover_image" name="cover_image" value="" />
+        </div>
+
         {/* Published */}
         <div class="flex items-center gap-3">
           <input
@@ -121,7 +139,7 @@ const error = Astro.url.searchParams.get('error');
           <label class="block text-sm font-medium text-gray-700 mb-1">
             Content
           </label>
-          <TiptapEditor client:load onChange={(html) => {
+          <TiptapEditor client:load postId="new" onChange={(html) => {
             document.getElementById('body_html')!.value = html;
           }} />
           <input type="hidden" id="body_html" name="body_html" value="" />
@@ -164,5 +182,71 @@ const error = Astro.url.searchParams.get('error');
 
   slugInput?.addEventListener('input', () => {
     if (slugPreview) slugPreview.textContent = slugInput.value;
+  });
+
+  // Cover image upload handling
+  const coverInput = document.getElementById('cover_image_file') as HTMLInputElement;
+  const coverHiddenInput = document.getElementById('cover_image') as HTMLInputElement;
+  const coverError = document.getElementById('cover-upload-error') as HTMLParagraphElement;
+  const form = document.getElementById('post-form') as HTMLFormElement;
+
+  const SUPABASE_URL = 'https://cmpdoonysjbnjlykwwyg.supabase.co';
+  const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNtcGRvb255c2pibmpseWt3d3lnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM0MTAyMzYsImV4cCI6MjA4ODk4NjIzNn0.jW6q0sLfy2rCTY84uJnZiz9SqpFoC33DrYjRr9I51Qo';
+
+  coverInput?.addEventListener('change', async () => {
+    const file = coverInput.files?.[0];
+    if (!file) return;
+
+    // Validate file type
+    const validTypes = ['image/jpeg', 'image/png', 'image/webp'];
+    if (!validTypes.includes(file.type)) {
+      coverError.textContent = 'Invalid file type. Please upload JPEG, PNG, or WebP.';
+      coverError.classList.remove('hidden');
+      coverInput.value = '';
+      return;
+    }
+
+    // Validate file size (5MB max)
+    if (file.size > 5 * 1024 * 1024) {
+      coverError.textContent = 'File too large. Maximum size is 5MB.';
+      coverError.classList.remove('hidden');
+      coverInput.value = '';
+      return;
+    }
+
+    coverError.classList.add('hidden');
+
+    // Upload to Supabase storage
+    try {
+      const ext = file.name.split('.').pop();
+      const fileName = crypto.randomUUID() + '.' + ext;
+      
+      // Upload file
+      const uploadRes = await fetch(
+        `${SUPABASE_URL}/storage/v1/object/blog-images/${fileName}`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': file.type,
+            'Authorization': `Bearer ${SUPABASE_ANON_KEY}`
+          },
+          body: file
+        }
+      );
+
+      if (!uploadRes.ok) {
+        throw new Error('Upload failed');
+      }
+
+      // Get public URL
+      const publicUrl = `${SUPABASE_URL}/storage/v1/object/public/blog-images/${fileName}`;
+      coverHiddenInput.value = publicUrl;
+      console.log('Cover image uploaded:', publicUrl);
+    } catch (e) {
+      console.error('Upload error:', e);
+      coverError.textContent = 'Failed to upload image. Please try again.';
+      coverError.classList.remove('hidden');
+      coverInput.value = '';
+    }
   });
 </script>

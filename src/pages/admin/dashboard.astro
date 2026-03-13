@@ -30,6 +30,7 @@ if (!session) {
 
 // Fetch all posts
 let posts: any[] = [];
+let publishedCount = 0;
 
 try {
   const { data, error } = await supabase
@@ -39,6 +40,7 @@ try {
   
   if (!error && data) {
     posts = data;
+    publishedCount = data.filter((p: any) => p.published).length;
   }
 } catch (e) {
   console.error('Error fetching posts:', e);
@@ -59,9 +61,20 @@ function formatDate(dateStr: string) {
     <header class="flex justify-between items-center mb-8">
       <div>
         <h1 class="text-3xl font-bold text-gray-900">Dashboard</h1>
-        <p class="text-gray-600 mt-1">Manage your blog posts</p>
+        <p class="text-gray-600 mt-1">
+          {posts.length > 0 
+            ? `${posts.length} post${posts.length !== 1 ? 's' : ''} (${publishedCount} published)`
+            : 'Manage your blog posts'
+          }
+        </p>
       </div>
       <div class="flex gap-4">
+        <a
+          href="/admin/business-info"
+          class="bg-gray-200 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-300 transition-colors"
+        >
+          Edit Business Info
+        </a>
         <a
           href="/admin/posts/new"
           class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors font-medium"

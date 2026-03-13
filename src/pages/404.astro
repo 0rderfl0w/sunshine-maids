@@ -1,0 +1,59 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout 
+  title="Page Not Found | Guardian Cleaners"
+  description="Oops! The page you're looking for doesn't exist. Guardian Cleaners offers professional house cleaning services in Oklahoma City, Edmond, and Norman."
+  canonical="/404"
+>
+  <!-- Hero -->
+  <section class="bg-gradient-to-br from-gray-50 to-white py-16 md:py-24 min-h-[60vh] flex items-center">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl mx-auto text-center">
+        <div class="mb-8">
+          <span class="text-[#F56C7E] text-8xl font-bold">404</span>
+        </div>
+        
+        <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          Page not found — but we can still clean your home.
+        </h1>
+        
+        <p class="text-xl text-gray-600 mb-8">
+          Looks like this page took a wrong turn. Don't worry — our cleaning services always end up in the right place.
+        </p>
+        
+        <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+          <a 
+            href="/"
+            class="bg-[#F56C7E] text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-[#e55a6c] transition-colors duration-200 shadow-lg hover:shadow-xl"
+          >
+            Homepage
+          </a>
+          <a 
+            href="/services"
+            class="border-2 border-[#F56C7E] text-[#F56C7E] px-8 py-4 rounded-lg text-lg font-semibold hover:bg-[#F56C7E] hover:text-white transition-colors duration-200"
+          >
+            Our Services
+          </a>
+          <a 
+            href="/contact"
+            class="border-2 border-gray-300 text-gray-700 px-8 py-4 rounded-lg text-lg font-semibold hover:border-[#F56C7E] hover:text-[#F56C7E] transition-colors duration-200"
+          >
+            Contact Us
+          </a>
+        </div>
+        
+        <div class="pt-8 border-t border-gray-200">
+          <p class="text-gray-600 mb-2">Or give us a call</p>
+          <a 
+            href="tel:+14059774237"
+            class="text-2xl font-bold text-[#F56C7E] hover:text-[#e55a6c] transition-colors duration-200"
+          >
+            (405) 977-4237
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

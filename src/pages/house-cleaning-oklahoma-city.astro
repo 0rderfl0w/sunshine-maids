@@ -1,0 +1,205 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const neighborhoods = [
+  "Nichols Hills",
+  "Midtown",
+  "Bricktown",
+  "Heritage Hills",
+  "Mesta Park",
+  "Capitol Hill",
+  "Deep Deuce",
+  "Paseo",
+  "Greater Uptown",
+  "Crown Heights",
+  "Lakewood",
+  "Edgemere Park"
+];
+
+// OKC-specific schema
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Guardian Cleaners",
+  "telephone": "+1-405-977-4237",
+  "email": "nik@guardian-cleaners.com",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "3129 NW 14th St",
+    "addressLocality": "Oklahoma City",
+    "addressRegion": "OK",
+    "postalCode": "73107"
+  },
+  "areaServed": ["Oklahoma City, OK", ...neighborhoods.map(n => `${n}, Oklahoma City, OK`)],
+  "priceRange": "$$"
+};
+---
+
+<Layout 
+  title="House Cleaning Oklahoma City - Guardian Cleaners"
+  description="Professional house cleaning services in Oklahoma City. Guardian Cleaners serves all OKC neighborhoods including Nichols Hills, Midtown, Bricktown, and more. Book your free estimate today!"
+  canonical="/house-cleaning-oklahoma-city"
+  schema={schema}
+>
+  <!-- Hero -->
+  <section class="bg-gradient-to-br from-gray-50 to-white py-16 md:py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mx-auto text-center">
+        <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+          House Cleaning in Oklahoma City
+        </h1>
+        <p class="text-xl text-gray-600 mb-8">
+          Professional residential cleaning services for homes across the Oklahoma City metro. From routine maintenance to deep cleaning, we've got you covered.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a 
+            href="tel:+14059774237"
+            class="bg-[#F56C7E] text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-[#e55a6c] transition-colors duration-200 shadow-lg hover:shadow-xl"
+          >
+            Call Now
+          </a>
+          <a 
+            href="/contact"
+            class="border-2 border-[#F56C7E] text-[#F56C7E] px-8 py-4 rounded-lg text-lg font-semibold hover:bg-[#F56C7E] hover:text-white transition-colors duration-200"
+          >
+            Get a Free Quote
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Content -->
+  <section class="py-16 md:py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
+          Your Trusted Oklahoma City House Cleaning Service
+        </h2>
+        
+        <div class="prose prose-lg text-gray-600 mb-10">
+          <p>
+            Guardian Cleaners has been serving Oklahoma City residents with professional house cleaning services for years. We understand that your home is your sanctuary, and maintaining a clean living space is essential for your health and wellbeing. Whether you need a one-time deep clean or recurring maintenance, our team of experienced cleaning professionals is dedicated to delivering exceptional results.
+          </p>
+          <p>
+            Oklahoma City residents trust Guardian Cleaners because we treat every home as if it were our own. Our attention to detail and commitment to customer satisfaction has made us one of the most recommended cleaning services in the metro area. We use proven cleaning techniques and quality products to ensure your home sparkles from room to room.
+          </p>
+        </div>
+
+        <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
+          Neighborhoods We Serve in OKC
+        </h2>
+        
+        <p class="text-gray-600 mb-6">
+          We proudly provide house cleaning services to residents across all Oklahoma City neighborhoods, including:
+        </p>
+        
+        <div class="flex flex-wrap gap-3 mb-10">
+          {neighborhoods.map(area => (
+            <span class="px-4 py-2 bg-gray-100 text-gray-700 rounded-full">
+              {area}
+            </span>
+          ))}
+        </div>
+
+        <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
+          Why Oklahoma City Residents Choose Guardian Cleaners
+        </h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+          <div class="bg-gray-50 p-6 rounded-lg">
+            <div class="w-12 h-12 bg-[#F56C7E] rounded-lg flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+            </div>
+            <h3 class="font-semibold text-gray-900 mb-2">Local & Reliable</h3>
+            <p class="text-gray-600 text-sm">We're right here in Oklahoma City, so you can count on us to show up on time, every time.</p>
+          </div>
+          
+          <div class="bg-gray-50 p-6 rounded-lg">
+            <div class="w-12 h-12 bg-[#F56C7E] rounded-lg flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <h3 class="font-semibold text-gray-900 mb-2">Flexible Scheduling</h3>
+            <p class="text-gray-600 text-sm">We work around your busy Oklahoma City lifestyle with convenient appointment times.</p>
+          </div>
+          
+          <div class="bg-gray-50 p-6 rounded-lg">
+            <div class="w-12 h-12 bg-[#F56C7E] rounded-lg flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+              </svg>
+            </div>
+            <h3 class="font-semibold text-gray-900 mb-2">Insured & Trusted</h3>
+            <p class="text-gray-600 text-sm">Fully bonded and insured for your peace of mind when we're in your home.</p>
+          </div>
+          
+          <div class="bg-gray-50 p-6 rounded-lg">
+            <div class="w-12 h-12 bg-[#F56C7E] rounded-lg flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+              </svg>
+            </div>
+            <h3 class="font-semibold text-gray-900 mb-2">Satisfaction Guaranteed</h3>
+            <p class="text-gray-600 text-sm">We're not happy unless you're happy. We'll make it right if anything isn't perfect.</p>
+          </div>
+        </div>
+
+        <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
+          Frequently Asked Questions
+        </h2>
+        
+        <div class="space-y-6">
+          <div>
+            <h3 class="font-semibold text-gray-900 mb-2">How much does house cleaning cost in Oklahoma City?</h3>
+            <p class="text-gray-600">Our pricing depends on the size of your home and the type of cleaning service you need. Contact us for a free estimate tailored to your specific needs.</p>
+          </div>
+          
+          <div>
+            <h3 class="font-semibold text-gray-900 mb-2">Do you bring your own cleaning supplies?</h3>
+            <p class="text-gray-600">Yes! Our team brings all necessary cleaning supplies and equipment. We use quality products that are safe for your home and family.</p>
+          </div>
+          
+          <div>
+            <h3 class="font-semibold text-gray-900 mb-2">Are your cleaners background checked?</h3>
+            <p class="text-gray-600">Absolutely. All our cleaning professionals undergo thorough background checks and training before entering your home.</p>
+          </div>
+          
+          <div>
+            <h3 class="font-semibold text-gray-900 mb-2">Do you offer recurring cleaning services?</h3>
+            <p class="text-gray-600">Yes, we offer weekly, bi-weekly, and monthly cleaning services to keep your Oklahoma City home consistently clean.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 md:py-20 bg-[#F56C7E]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
+        Ready for a Cleaner Home?
+      </h2>
+      <p class="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
+        Contact Guardian Cleaners today for professional house cleaning services in Oklahoma City.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a 
+          href="tel:+14059774237"
+          class="bg-white text-[#F56C7E] px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-100 transition-colors duration-200 shadow-lg"
+        >
+          Call Now
+        </a>
+        <a 
+          href="/contact"
+          class="border-2 border-white text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-white hover:text-[#F56C7E] transition-colors duration-200"
+        >
+          Get a Free Quote
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

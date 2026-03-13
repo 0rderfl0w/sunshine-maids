@@ -1,0 +1,85 @@
+---
+const navLinks = [
+  { href: '/', label: 'Home' },
+  { href: '/services', label: 'Services' },
+  { href: '/about', label: 'About' },
+  { href: '/contact', label: 'Contact' }
+];
+---
+
+<header class="bg-white shadow-sm sticky top-0 z-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-16">
+      <!-- Logo -->
+      <a href="/" class="flex items-center">
+        <span class="text-2xl font-bold text-[#F56C7E]">Guardian Cleaners</span>
+      </a>
+      
+      <!-- Desktop Navigation -->
+      <nav class="hidden md:flex items-center space-x-8">
+        {navLinks.map(link => (
+          <a 
+            href={link.href}
+            class="text-gray-700 hover:text-[#F56C7E] font-medium transition-colors duration-200"
+          >
+            {link.label}
+          </a>
+        ))}
+        <a 
+          href="tel:+14059774237"
+          class="bg-[#F56C7E] text-white px-4 py-2 rounded-lg font-medium hover:bg-[#e55a6c] transition-colors duration-200"
+        >
+          Call Now
+        </a>
+      </nav>
+      
+      <!-- Mobile Menu Button -->
+      <button 
+        id="mobile-menu-btn"
+        class="md:hidden p-2 text-gray-700 hover:text-[#F56C7E] focus:outline-none focus:ring-2 focus:ring-[#F56C7E] rounded-lg"
+        aria-label="Toggle menu"
+        aria-expanded="false"
+      >
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path class="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          <path class="close-icon hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+  </div>
+  
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100">
+    <div class="px-4 py-4 space-y-3">
+      {navLinks.map(link => (
+        <a 
+          href={link.href}
+          class="block text-gray-700 hover:text-[#F56C7E] font-medium py-2 transition-colors duration-200"
+        >
+          {link.label}
+        </a>
+      ))}
+      <a 
+        href="tel:+14059774237"
+        class="block bg-[#F56C7E] text-white text-center px-4 py-3 rounded-lg font-medium hover:bg-[#e55a6c] transition-colors duration-200"
+      >
+        Call Now
+      </a>
+    </div>
+  </div>
+</header>
+
+<script>
+  const menuBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const menuIcon = menuBtn?.querySelector('.menu-icon');
+  const closeIcon = menuBtn?.querySelector('.close-icon');
+  
+  menuBtn?.addEventListener('click', () => {
+    const isExpanded = menuBtn.getAttribute('aria-expanded') === 'true';
+    menuBtn.setAttribute('aria-expanded', (!isExpanded).toString());
+    mobileMenu?.classList.toggle('hidden');
+    menuIcon?.classList.toggle('hidden');
+    closeIcon?.classList.toggle('hidden');
+  });
+</script>

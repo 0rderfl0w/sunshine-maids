@@ -5,6 +5,7 @@ import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
   output: 'static',
+  site: 'https://guardian-cleaners.com',
   adapter: vercel(),
   integrations: [react()],
   vite: {

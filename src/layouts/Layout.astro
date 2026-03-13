@@ -1,5 +1,8 @@
 ---
 import '../styles/global.css';
+import JsonLd from '../components/JsonLd.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
 
 interface Props {
   title: string;
@@ -7,17 +10,39 @@ interface Props {
   canonical?: string;
   ogImage?: string;
   ogType?: string;
+  schema?: Record<string, unknown>;
 }
 
 const {
   title,
   description = 'Guardian Cleaners - Professional residential and commercial cleaning services in Oklahoma City, Edmond, and Norman.',
   canonical,
-  ogImage = '/og-default.png',
-  ogType = 'website'
+  ogImage = '/images/og-default.jpg',
+  ogType = 'website',
+  schema
 } = Astro.props;
 
-const canonicalUrl = canonical ? new URL(canonical, Astro.site).toString() : undefined;
+const canonicalUrl = canonical ? new URL(canonical, Astro.site).toString() : new URL(Astro.url.pathname, Astro.site).toString();
+
+// Default LocalBusiness schema
+const defaultSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Guardian Cleaners",
+  "telephone": "+1-405-977-4237",
+  "email": "nik@guardian-cleaners.com",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "3129 NW 14th St",
+    "addressLocality": "Oklahoma City",
+    "addressRegion": "OK",
+    "postalCode": "73107"
+  },
+  "areaServed": ["Oklahoma City, OK", "Edmond, OK", "Norman, OK"],
+  "priceRange": "$$"
+};
+
+const finalSchema = schema || defaultSchema;
 ---
 
 <!DOCTYPE html>
@@ -25,39 +50,42 @@ const canonicalUrl = canonical ? new URL(canonical, Astro.site).toString() : und
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="icon" type="image/x-icon" href="/favicon.ico" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <meta name="theme-color" content="#F56C7E" />
   <title>{title}</title>
   <meta name="description" content={description} />
-  {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
+  <link rel="canonical" href={canonicalUrl} />
   
   <!-- Open Graph -->
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
   <meta property="og:type" content={ogType} />
   <meta property="og:image" content={ogImage} />
+  <meta property="og:url" content={canonicalUrl} />
   
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content={title} />
   <meta name="twitter:description" content={description} />
   <meta name="twitter:image" content={ogImage} />
+  
+  <!-- Structured Data -->
+  <JsonLd schema={finalSchema} />
 </head>
 <body class="font-sans antialiased text-gray-900 bg-white">
-  <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 focus:px-4 focus:py-2 focus:bg-white focus:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-600">
+  <!-- Skip to main content -->
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 focus:px-4 focus:py-2 focus:bg-white focus:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500">
     Skip to main content
   </a>
   
-  <nav aria-label="Main navigation">
-    <slot name="nav" />
-  </nav>
+  <Nav />
   
   <main id="main-content">
     <slot />
   </main>
   
-  <footer>
-    <slot name="footer" />
-  </footer>
+  <Footer />
 </body>
 </html>

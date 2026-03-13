@@ -47,16 +47,28 @@ export async function DELETE({ params, redirect }: APIContext) {
   return handleDelete(postId, redirect);
 }
 
+function getSupabaseAdmin() {
+  const supabaseUrl = import.meta.env.PUBLIC_SUPABASE_URL;
+  const supabaseServiceKey = import.meta.env.SUPABASE_SERVICE_ROLE_KEY;
+
+  if (!supabaseUrl || !supabaseServiceKey) {
+    const missing = [];
+    if (!supabaseUrl) missing.push('PUBLIC_SUPABASE_URL');
+    if (!supabaseServiceKey) missing.push('SUPABASE_SERVICE_ROLE_KEY');
+    return { client: null, error: 'Missing env vars: ' + missing.join(', ') };
+  }
+
+  return { client: createClient(supabaseUrl, supabaseServiceKey), error: null };
+}
+
 async function handlePut(
   postId: string,
   formData: FormData,
   redirect: (url: string) => Response
 ) {
-  const supabaseUrl = import.meta.env.PUBLIC_SUPABASE_URL;
-  const supabaseServiceKey = import.meta.env.SUPABASE_SERVICE_ROLE_KEY;
-
-  if (!supabaseUrl || !supabaseServiceKey) {
-    return redirect('/admin/dashboard');
+  const { client: supabaseAdmin, error: envError } = getSupabaseAdmin();
+  if (!supabaseAdmin) {
+    return redirect(`/admin/posts/${postId}/edit?error=${encodeURIComponent(envError!)}`);
   }
 
   const title = formData.get('title')?.toString();
@@ -67,12 +79,10 @@ async function handlePut(
   const published = formData.get('published')?.toString() === 'true';
 
   if (!title || !slug) {
-    return redirect(`/admin/posts/${postId}/edit?error=1`);
+    return redirect(`/admin/posts/${postId}/edit?error=${encodeURIComponent('Title and slug are required')}`);
   }
 
   try {
-    const supabaseAdmin = createClient(supabaseUrl, supabaseServiceKey);
-
     // Get current post to preserve published_at if not publishing
     const { data: currentPost } = await supabaseAdmin
       .from('posts')
@@ -104,13 +114,13 @@ async function handlePut(
 
     if (error) {
       console.error('Error updating post:', error);
-      return redirect(`/admin/posts/${postId}/edit?error=1`);
+      return redirect(`/admin/posts/${postId}/edit?error=${encodeURIComponent(error.message)}`);
     }
 
     return redirect('/admin/dashboard');
-  } catch (e) {
+  } catch (e: any) {
     console.error('Exception updating post:', e);
-    return redirect(`/admin/posts/${postId}/edit?error=1`);
+    return redirect(`/admin/posts/${postId}/edit?error=${encodeURIComponent(e.message || 'Unknown error')}`);
   }
 }
 
@@ -118,16 +128,12 @@ async function handleDelete(
   postId: string,
   redirect: (url: string) => Response
 ) {
-  const supabaseUrl = import.meta.env.PUBLIC_SUPABASE_URL;
-  const supabaseServiceKey = import.meta.env.SUPABASE_SERVICE_ROLE_KEY;
-
-  if (!supabaseUrl || !supabaseServiceKey) {
+  const { client: supabaseAdmin, error: envError } = getSupabaseAdmin();
+  if (!supabaseAdmin) {
     return redirect('/admin/dashboard');
   }
 
   try {
-    const supabaseAdmin = createClient(supabaseUrl, supabaseServiceKey);
-
     const { error } = await supabaseAdmin
       .from('posts')
       .delete()
@@ -135,11 +141,10 @@ async function handleDelete(
 
     if (error) {
       console.error('Error deleting post:', error);
-      return redirect('/admin/dashboard');
     }
 
     return redirect('/admin/dashboard');
-  } catch (e) {
+  } catch (e: any) {
     console.error('Exception deleting post:', e);
     return redirect('/admin/dashboard');
   }

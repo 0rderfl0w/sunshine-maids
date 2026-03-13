@@ -4,17 +4,20 @@ import Link from '@tiptap/extension-link';
 
 /**
  * Tiptap extensions for the blog editor.
- * Note: Placeholder extension is excluded from generateHTML calls
- * as it doesn't render properly in HTML output.
+ * StarterKit's built-in link (if any) is disabled to avoid
+ * "Duplicate extension names found: ['link']" warning.
  */
 export const TIPTAP_EXTENSIONS = [
-  StarterKit,
+  StarterKit.configure({
+    // @ts-ignore — disable link if StarterKit bundles one
+    link: false,
+  }),
   Image,
   Link.configure({
     openOnClick: false,
     HTMLAttributes: {
       rel: 'noopener noreferrer',
-      target: '_blank'
-    }
-  })
+      target: '_blank',
+    },
+  }),
 ];

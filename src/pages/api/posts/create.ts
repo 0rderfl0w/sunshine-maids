@@ -8,7 +8,10 @@ export async function POST(context: APIContext) {
   const supabaseServiceKey = import.meta.env.SUPABASE_SERVICE_ROLE_KEY;
 
   if (!supabaseUrl || !supabaseServiceKey) {
-    return context.redirect('/admin/posts/new?error=1');
+    const missing = [];
+    if (!supabaseUrl) missing.push('PUBLIC_SUPABASE_URL');
+    if (!supabaseServiceKey) missing.push('SUPABASE_SERVICE_ROLE_KEY');
+    return context.redirect(`/admin/posts/new?error=${encodeURIComponent('Missing env vars: ' + missing.join(', '))}`);
   }
 
   // Get form data
@@ -22,7 +25,7 @@ export async function POST(context: APIContext) {
 
   // Validate required fields
   if (!title || !slug) {
-    return context.redirect('/admin/posts/new?error=1');
+    return context.redirect(`/admin/posts/new?error=${encodeURIComponent('Title and slug are required')}`);
   }
 
   try {
@@ -44,12 +47,12 @@ export async function POST(context: APIContext) {
 
     if (error) {
       console.error('Error creating post:', error);
-      return context.redirect('/admin/posts/new?error=1');
+      return context.redirect(`/admin/posts/new?error=${encodeURIComponent(error.message)}`);
     }
 
     return context.redirect('/admin/dashboard');
-  } catch (e) {
+  } catch (e: any) {
     console.error('Exception creating post:', e);
-    return context.redirect('/admin/posts/new?error=1');
+    return context.redirect(`/admin/posts/new?error=${encodeURIComponent(e.message || 'Unknown error')}`);
   }
 }

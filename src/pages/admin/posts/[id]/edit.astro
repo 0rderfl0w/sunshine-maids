@@ -59,6 +59,8 @@ try {
 if (!post) {
   return Astro.redirect('/admin/dashboard');
 }
+
+const queryError = Astro.url.searchParams.get('error');
 ---
 
 <Layout title={`Edit: ${post.title} | Guardian Cleaners Admin`}>
@@ -75,6 +77,12 @@ if (!post) {
         ← Back to Dashboard
       </a>
     </header>
+
+    {queryError && (
+      <div class="mb-6 p-4 bg-red-50 border border-red-200 text-red-700 rounded-lg">
+        <strong>Error:</strong> {decodeURIComponent(queryError)}
+      </div>
+    )}
 
     {fetchError && (
       <div class="mb-6 p-4 bg-red-50 border border-red-200 text-red-700 rounded-lg">

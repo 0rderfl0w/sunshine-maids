@@ -27,7 +27,7 @@ const error = Astro.url.searchParams.get('error');
 
     {error && (
       <div class="mb-6 p-4 bg-red-50 border border-red-200 text-red-700 rounded-lg">
-        Failed to create post. Please try again.
+        <strong>Error:</strong> {decodeURIComponent(error)}
       </div>
     )}
 

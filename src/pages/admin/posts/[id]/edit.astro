@@ -180,9 +180,7 @@ if (!post) {
             client:load 
             postId={post.id}
             initialContent={post.body_html || ''}
-            onChange={(html) => {
-              document.getElementById('body_html')!.value = html;
-            }} 
+            hiddenInputId="body_html"
           />
           <input type="hidden" id="body_html" name="body_html" value={post.body_html || ''} />
         </div>

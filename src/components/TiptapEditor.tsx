@@ -5,10 +5,10 @@ import { useEffect, useState } from 'react';
 interface TiptapEditorProps {
   initialContent?: string;
   postId?: string;
-  onChange: (html: string) => void;
+  hiddenInputId?: string;
 }
 
-export default function TiptapEditor({ initialContent = '', postId = 'new', onChange }: TiptapEditorProps) {
+export default function TiptapEditor({ initialContent = '', postId = 'new', hiddenInputId = 'body_html' }: TiptapEditorProps) {
   const [draftSaved, setDraftSaved] = useState(false);
   
   // Get draft key based on post ID
@@ -28,7 +28,9 @@ export default function TiptapEditor({ initialContent = '', postId = 'new', onCh
     content: getInitialContent(),
     onUpdate: ({ editor }) => {
       const html = editor.getHTML();
-      onChange(html);
+      // Sync to hidden form input (can't pass functions across Astro island boundary)
+      const hiddenInput = document.getElementById(hiddenInputId) as HTMLInputElement | null;
+      if (hiddenInput) hiddenInput.value = html;
       
       // Auto-save to localStorage
       localStorage.setItem(getDraftKey(), html);

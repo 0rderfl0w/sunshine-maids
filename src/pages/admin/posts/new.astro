@@ -140,9 +140,7 @@ const error = Astro.url.searchParams.get('error');
           <label class="block text-sm font-medium text-gray-700 mb-1">
             Content
           </label>
-          <TiptapEditor client:load postId="new" onChange={(html) => {
-            document.getElementById('body_html')!.value = html;
-          }} />
+          <TiptapEditor client:load postId="new" hiddenInputId="body_html" />
           <input type="hidden" id="body_html" name="body_html" value="" />
         </div>
       </div>

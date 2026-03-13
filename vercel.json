@@ -1,0 +1,13 @@
+{
+  "buildCommand": "bun run build",
+  "installCommand": "bun install",
+  "framework": "astro",
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Robots-Tag", "value": "noindex, nofollow" }
+      ]
+    }
+  ]
+}

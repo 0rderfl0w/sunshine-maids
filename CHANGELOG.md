@@ -12,7 +12,12 @@
 - Feat: Added "View All Posts →" link to `/blog` page
 - Feat: Service areas section with clickable area links
 - Fix: Build verified locally — all SSR and image imports working correctly
-- Next: Deploy to Vercel and verify images + blog section are live
+- Deploy: Production deployment successful to https://guardian-cleaners-website.vercel.app
+- Verify: ✅ Hero image present and rendering
+- Verify: ✅ All service images (basic, deep, move-in, airbnb) present and rendering
+- Verify: ✅ Latest Blog Posts section present with Supabase integration
+- Verify: ✅ "View All Posts" link present and functional
+- Status: COMPLETE — Tasks 1-5 all done, images scraped, blog section live, deployed to production
 
 ## 2026-03-13
 - Fix: body_html sync on editor mount + prevent null constraint violation (Razor & Blade)

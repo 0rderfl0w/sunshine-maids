@@ -1,5 +1,43 @@
 ---
+// Homepage - SSR to fetch latest blog posts
+export const prerender = false;
+
 import Layout from '../layouts/Layout.astro';
+import { createServerClient } from '@supabase/ssr';
+
+const supabaseUrl = import.meta.env.PUBLIC_SUPABASE_URL;
+const supabaseKey = import.meta.env.PUBLIC_SUPABASE_ANON_KEY;
+
+// Create server client
+const supabase = createServerClient(
+  supabaseUrl,
+  supabaseKey,
+  {
+    cookies: {
+      get: (key) => Astro.cookies.get(key)?.value,
+      set: (key, value, options) => {
+        Astro.cookies.set(key, value, options);
+      }
+    }
+  }
+);
+
+// Fetch latest 3 published posts
+let latestPosts: any[] = [];
+try {
+  const { data, error } = await supabase
+    .from('posts')
+    .select('id, title, slug, excerpt, cover_image, published_at')
+    .eq('published', true)
+    .order('published_at', { ascending: false })
+    .limit(3);
+  
+  if (!error && data) {
+    latestPosts = data;
+  }
+} catch (e) {
+  console.error('Error fetching posts:', e);
+}
 
 const hero = {
   headline: "Expert Cleaning Services for Your Home",
@@ -10,21 +48,25 @@ const services = [
   {
     name: "Basic House Cleaning",
     description: "Routine cleaning tasks including dusting, vacuuming, scrubbing bathrooms and kitchens",
+    image: "/images/service-basic.jpg",
     alt: "Basic house cleaning in Oklahoma City, OK — Guardian Cleaners"
   },
   {
     name: "Deep House Cleaning",
     description: "Thorough cleaning of every nook and cranny including ceiling fans, baseboards, and appliances",
+    image: "/images/service-deep.jpg",
     alt: "Deep house cleaning in Oklahoma City, OK — Guardian Cleaners"
   },
   {
     name: "Move-In/Move-Out Cleaning",
     description: "Comprehensive cleaning for moving transitions",
+    image: "/images/service-movein.jpg",
     alt: "Move-in/move-out cleaning in Oklahoma City, OK — Guardian Cleaners"
   },
   {
     name: "Airbnb Cleaning",
     description: "Turnaround cleaning for short-term rental properties",
+    image: "/images/service-airbnb.jpg",
     alt: "Airbnb cleaning in Oklahoma City, OK — Guardian Cleaners"
   }
 ];
@@ -62,6 +104,15 @@ const testimonials = [
     city: "Norman"
   }
 ];
+
+// Format date helper
+function formatDate(dateStr: string) {
+  return new Date(dateStr).toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  });
+}
 ---
 
 <Layout 
@@ -70,7 +121,14 @@ const testimonials = [
 >
   <!-- Hero Section -->
   <section class="relative bg-gradient-to-br from-gray-50 to-white py-16 md:py-24">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="absolute inset-0 overflow-hidden">
+      <img 
+        src="/images/hero-banner.jpg" 
+        alt="Guardian Cleaners - Professional Cleaning Services"
+        class="w-full h-full object-cover opacity-10"
+      />
+    </div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
       <div class="text-center max-w-3xl mx-auto">
         <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
           {hero.headline}
@@ -108,15 +166,18 @@ const testimonials = [
       
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {services.map(service => (
-          <div class="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow duration-300">
-            <!-- Placeholder for service image -->
-            <div class="w-full h-40 bg-gray-100 rounded-lg mb-4 flex items-center justify-center">
-              <svg class="w-16 h-16 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-              </svg>
+          <div class="bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition-shadow duration-300">
+            <div class="w-full h-40 bg-gray-100 overflow-hidden">
+              <img 
+                src={service.image} 
+                alt={service.alt}
+                class="w-full h-full object-cover"
+              />
             </div>
-            <h3 class="text-xl font-semibold text-gray-900 mb-2">{service.name}</h3>
-            <p class="text-gray-600 text-sm">{service.description}</p>
+            <div class="p-6">
+              <h3 class="text-xl font-semibold text-gray-900 mb-2">{service.name}</h3>
+              <p class="text-gray-600 text-sm">{service.description}</p>
+            </div>
           </div>
         ))}
       </div>
@@ -186,6 +247,66 @@ const testimonials = [
       </div>
     </div>
   </section>
+
+  <!-- Latest Blog Posts -->
+  {latestPosts.length > 0 && (
+    <section class="py-16 md:py-20 bg-gray-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Latest Blog Posts</h2>
+          <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+            Cleaning tips, tricks, and insights from Oklahoma City's premier cleaning service.
+          </p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {latestPosts.map(post => (
+            <article class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow">
+              {post.cover_image && (
+                <div class="h-48 bg-gray-200 overflow-hidden">
+                  <img 
+                    src={post.cover_image} 
+                    alt={post.excerpt || post.title}
+                    class="w-full h-full object-cover"
+                  />
+                </div>
+              )}
+              <div class="p-6">
+                <h3 class="text-xl font-semibold text-gray-900 mb-2">
+                  <a href={`/blog/${post.slug}`} class="hover:text-[#F56C7E] transition-colors">
+                    {post.title}
+                  </a>
+                </h3>
+                <p class="text-gray-600 text-sm mb-4">
+                  {post.excerpt ? post.excerpt.substring(0, 100) + '...' : ''}
+                </p>
+                <div class="flex items-center justify-between">
+                  <time datetime={post.published_at} class="text-sm text-gray-500">
+                    {formatDate(post.published_at)}
+                  </time>
+                  <a 
+                    href={`/blog/${post.slug}`}
+                    class="text-[#F56C7E] text-sm font-semibold hover:underline"
+                  >
+                    Read More →
+                  </a>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+        
+        <div class="text-center mt-10">
+          <a 
+            href="/blog"
+            class="inline-flex items-center text-[#F56C7E] font-semibold hover:underline"
+          >
+            View All Posts →
+          </a>
+        </div>
+      </div>
+    </section>
+  )}
 
   <!-- CTA Banner -->
   <section class="py-16 md:py-20 bg-[#F56C7E]">

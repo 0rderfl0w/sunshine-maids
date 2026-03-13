@@ -1,5 +1,19 @@
 # CHANGELOG — Guardian Cleaners Website
 
+## 2026-03-13 (Continued)
+- Task: Scrape images from original site + add to homepage + add latest posts section
+- Feat: Downloaded 14 hero/service images from guardian-cleaners.com via Wayback Machine (static.wixstatic.com CDN)
+- Feat: Created `public/images/` directory with hero-banner, service images (basic, deep, move-in, airbnb, recurring, commercial, construction), and about images
+- Feat: Updated `src/pages/index.astro` — converted to SSR (`export const prerender = false`) to fetch blog posts at runtime
+- Feat: Added hero image background to hero section
+- Feat: Added image to each service card in services section (4 main services displayed)
+- Feat: Added "Latest Blog Posts" section — queries Supabase for 3 most recent published posts, displays title, excerpt, cover image, published date, and "Read More" links
+- Feat: "Latest Blog Posts" section only renders if posts exist (no empty state on public page)
+- Feat: Added "View All Posts →" link to `/blog` page
+- Feat: Service areas section with clickable area links
+- Fix: Build verified locally — all SSR and image imports working correctly
+- Next: Deploy to Vercel and verify images + blog section are live
+
 ## 2026-03-13
 - Fix: body_html sync on editor mount + prevent null constraint violation (Razor & Blade)
 - Fix: Vercel project linking — CLI pointed at wrong project, caused queue jam, deploys stuck

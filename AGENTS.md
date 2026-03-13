@@ -114,6 +114,12 @@ All 4 required env vars are set in Vercel for production/preview/development:
 6. **Supabase SMTP rate limit:** 2 emails/hour. Don't spam invite/reset emails.
 7. **Blog nav link:** Must be in `Nav.astro` navLinks array. Was missing initially.
 8. **Error visibility:** API endpoints redirect with `?error=` param. Check URL bar for error messages if post creation seems to silently fail.
+9. **`define:vars` kills ES module imports:** Astro `<script define:vars={{...}}>` converts to a non-module script. Any `import` statements in that script will silently fail. Split into two scripts: one `define:vars` for injecting server data, one module script for imports/logic. Or remove `define:vars` if the variables aren't needed.
+10. **Scraped image filenames are lies:** Images scraped from original site had misleading names (e.g., `service-recurring.jpg` was actually a commercial office building). Always visually verify image content before mapping to service categories — never trust filenames.
+11. **Vercel CLI creates duplicate projects silently:** If `.vercel/project.json` points to a deleted/wrong project, `npx vercel` creates a new project without warning. Always `cat .vercel/project.json` before manual deploys.
+12. **Tiptap `onUpdate` doesn't fire on mount:** The hidden `body_html` input stays empty if content is loaded from localStorage draft. Must also use `onCreate` handler to sync initial content.
+13. **Two Supabase client types in admin pages:** Server-side frontmatter uses `createServerClient` (for auth checks, DB reads). Client-side `<script>` uses `createBrowserSupabaseClient` (for storage uploads). Don't mix them up — the browser client picks up auth from cookies automatically.
+14. **Post-deploy cache:** After Vercel deploy, the old version may be cached at the edge. Tell users to hard-refresh (Ctrl+Shift+R) or wait ~60 seconds for propagation.
 
 ---
 

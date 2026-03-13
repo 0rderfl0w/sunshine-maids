@@ -1,5 +1,16 @@
 # CHANGELOG — Guardian Cleaners Website
 
+## 2026-03-13 (Image Remap - Razor & Blade)
+- Fix: Service images remapped to match actual content (commit e8c9f7b)
+  - Images were scraped from original site with misleading filenames
+  - `service-recurring.jpg` showed commercial office building, not home cleaning
+  - `service-construction.jpg` showed café table wiping, not post-construction
+  - Remapped all 7 images by visual inspection of actual content
+  - Basic → cleaning supplies, Deep → two people scrubbing kitchen, Move-In → empty apartment mopping
+  - Recurring → person cleaning home kitchen, Airbnb → clean modern kitchen, Commercial → office building
+  - Post-Construction → person cleaning workspace
+- Deploy: Production deploy successful (Vercel CLI)
+
 ## 2026-03-13 (Bug Fixes - Razor & Blade)
 - Fix: Bug 1 - Cover image upload on edit page not showing UX feedback
   - **Root cause:** `<script define:vars={{...}}>` converted script to non-module, blocking ES module imports

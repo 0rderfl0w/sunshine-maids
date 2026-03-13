@@ -4,31 +4,8 @@ export const prerender = false;
 
 import Layout from '../../../layouts/Layout.astro';
 import TiptapEditor from '../../../components/TiptapEditor';
-import { createServerClient } from '@supabase/ssr';
 
-const supabaseUrl = import.meta.env.PUBLIC_SUPABASE_URL;
-const supabaseKey = import.meta.env.PUBLIC_SUPABASE_ANON_KEY;
-
-const supabase = createServerClient(
-  supabaseUrl,
-  supabaseKey,
-  {
-    cookies: {
-      get: (key) => Astro.cookies.get(key)?.value,
-      set: (key, value, options) => {
-        Astro.cookies.set(key, value, options);
-      }
-    }
-  }
-);
-
-// Check auth
-const { data: { session } } = await supabase.auth.getSession();
-
-if (!session) {
-  return Astro.redirect('/admin/login');
-}
-
+// Auth is handled by middleware — no need to check here
 // Get error from query params if any
 const error = Astro.url.searchParams.get('error');
 ---

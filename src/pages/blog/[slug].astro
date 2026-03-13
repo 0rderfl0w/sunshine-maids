@@ -1,0 +1,141 @@
+---
+// Individual blog post page - SSR
+export const prerender = false;
+
+import Layout from '../../layouts/Layout.astro';
+import { createServerClient } from '@supabase/ssr';
+import JsonLd from '../../components/JsonLd.astro';
+
+const { slug } = Astro.params;
+
+const supabaseUrl = import.meta.env.PUBLIC_SUPABASE_URL;
+const supabaseKey = import.meta.env.PUBLIC_SUPABASE_ANON_KEY;
+
+const supabase = createServerClient(
+  supabaseUrl,
+  supabaseKey,
+  {
+    cookies: {
+      get: (key) => Astro.cookies.get(key)?.value,
+      set: (key, value, options) => {
+        Astro.cookies.set(key, value, options);
+      }
+    }
+  }
+);
+
+// Fetch post by slug
+let post: any = null;
+let error = null;
+
+try {
+  const { data, error: fetchError } = await supabase
+    .from('posts')
+    .select('*')
+    .eq('slug', slug)
+    .eq('published', true)
+    .single();
+  
+  if (fetchError) {
+    error = 'not_found';
+  } else {
+    post = data;
+  }
+} catch (e) {
+  console.error('Error fetching post:', e);
+  error = 'not_found';
+}
+
+// 404 if not found
+if (!post) {
+  return Astro.redirect('/404');
+}
+
+// Format date
+function formatDate(dateStr: string) {
+  return new Date(dateStr).toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  });
+}
+
+// JSON-LD for BlogPosting
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": post.title,
+  "description": post.excerpt || post.body_html?.replace(/<[^>]*>/g, '').substring(0, 150),
+  "image": post.cover_image,
+  "datePublished": post.published_at,
+  "dateModified": post.updated_at,
+  "author": {
+    "@type": "Organization",
+    "name": "Guardian Cleaners"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Guardian Cleaners",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "/images/og-default.jpg"
+    }
+  }
+};
+---
+
+<Layout
+  title={`${post.title} | Guardian Cleaners Blog`}
+  description={post.excerpt || post.body_html?.replace(/<[^>]*>/g, '').substring(0, 150)}
+  ogImage={post.cover_image}
+>
+  <JsonLd schema={jsonLd} />
+  
+  <main class="max-w-3xl mx-auto px-4 py-12">
+    <!-- Breadcrumb -->
+    <nav class="mb-8 text-sm" aria-label="Breadcrumb">
+      <ol class="flex items-center gap-2 text-gray-500">
+        <li><a href="/" class="hover:text-blue-600">Home</a></li>
+        <li>/</li>
+        <li><a href="/blog" class="hover:text-blue-600">Blog</a></li>
+        <li>/</li>
+        <li class="text-gray-900">{post.title}</li>
+      </ol>
+    </nav>
+
+    <article>
+      <header class="mb-8">
+        <h1 class="text-4xl font-bold text-gray-900 mb-4">{post.title}</h1>
+        
+        <div class="flex items-center gap-4 text-gray-600">
+          <time datetime={post.published_at}>
+            {formatDate(post.published_at)}
+          </time>
+        </div>
+      </header>
+
+      {post.cover_image && (
+        <figure class="mb-8">
+          <img 
+            src={post.cover_image} 
+            alt={post.excerpt || post.title}
+            class="w-full rounded-lg"
+          />
+        </figure>
+      )}
+
+      <div class="prose prose-base md:prose-lg max-w-none">
+        <Fragment set:html={post.body_html} />
+      </div>
+    </article>
+
+    <footer class="mt-12 pt-8 border-t border-gray-200">
+      <a 
+        href="/blog" 
+        class="inline-flex items-center text-blue-600 hover:text-blue-700"
+      >
+        ← Back to Blog
+      </a>
+    </footer>
+  </main>
+</Layout>

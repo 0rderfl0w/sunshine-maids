@@ -1,0 +1,154 @@
+---
+// Blog listing page - SSR
+export const prerender = false;
+
+import Layout from '../../layouts/Layout.astro';
+import { createServerClient } from '@supabase/ssr';
+
+const supabaseUrl = import.meta.env.PUBLIC_SUPABASE_URL;
+const supabaseKey = import.meta.env.PUBLIC_SUPABASE_ANON_KEY;
+
+// Get page from query params (default to 1)
+const page = parseInt(Astro.url.searchParams.get('page') || '1');
+const limit = 10;
+const offset = (page - 1) * limit;
+
+// Create server client
+const supabase = createServerClient(
+  supabaseUrl,
+  supabaseKey,
+  {
+    cookies: {
+      get: (key) => Astro.cookies.get(key)?.value,
+      set: (key, value, options) => {
+        Astro.cookies.set(key, value, options);
+      }
+    }
+  }
+);
+
+// Fetch published posts
+let posts: any[] = [];
+let totalCount = 0;
+
+try {
+  // Get total count
+  const { count } = await supabase
+    .from('posts')
+    .select('*', { count: 'exact', head: true })
+    .eq('published', true);
+  
+  totalCount = count || 0;
+  
+  // Get posts for current page
+  const { data, error } = await supabase
+    .from('posts')
+    .select('id, title, slug, excerpt, cover_image, published_at, created_at')
+    .eq('published', true)
+    .order('published_at', { ascending: false })
+    .range(offset, offset + limit - 1);
+  
+  if (!error && data) {
+    posts = data;
+  }
+} catch (e) {
+  console.error('Error fetching posts:', e);
+}
+
+const totalPages = Math.ceil(totalCount / limit);
+const hasNextPage = page < totalPages;
+const hasPrevPage = page > 1;
+
+// Format date helper
+function formatDate(dateStr: string) {
+  return new Date(dateStr).toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  });
+}
+---
+
+<Layout
+  title="Blog | Guardian Cleaners"
+  description="Cleaning tips, tricks, and news from Guardian Cleaners in Oklahoma City."
+>
+  <main class="max-w-4xl mx-auto px-4 py-12">
+    <header class="mb-12">
+      <h1 class="text-4xl font-bold text-gray-900 mb-4">Guardian Cleaners Blog</h1>
+      <p class="text-lg text-gray-600">
+        Cleaning tips, tricks, and insights from Oklahoma City's premier cleaning service.
+      </p>
+    </header>
+
+    {posts.length === 0 ? (
+      <div class="text-center py-12">
+        <p class="text-gray-600 text-lg">No blog posts yet. Check back soon!</p>
+      </div>
+    ) : (
+      <>
+        <div class="grid gap-8">
+          {posts.map((post) => (
+            <article class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+              {post.cover_image && (
+                <div class="h-48 bg-gray-200 overflow-hidden">
+                  <img 
+                    src={post.cover_image} 
+                    alt={post.excerpt || post.title}
+                    class="w-full h-full object-cover"
+                  />
+                </div>
+              )}
+              <div class="p-6">
+                <h2 class="text-2xl font-bold text-gray-900 mb-2">
+                  <a href={`/blog/${post.slug}`} class="hover:text-blue-600 transition-colors">
+                    {post.title}
+                  </a>
+                </h2>
+                <p class="text-gray-600 mb-4">
+                  {post.excerpt || (post.body_html ? post.body_html.replace(/<[^>]*>/g, '').substring(0, 150) + '...' : '')}
+                </p>
+                <div class="flex items-center text-sm text-gray-500">
+                  <time datetime={post.published_at || post.created_at}>
+                    {formatDate(post.published_at || post.created_at)}
+                  </time>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+
+        {/* Pagination */}
+        {totalPages > 1 && (
+          <nav class="mt-12 flex justify-center items-center gap-4" aria-label="Blog pagination">
+            {hasPrevPage ? (
+              <a 
+                href={`/blog?page=${page - 1}`}
+                class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+              >
+                Previous
+              </a>
+            ) : (
+              <span class="px-4 py-2 bg-gray-200 text-gray-500 rounded-lg">Previous</span>
+            )}
+            
+            <span class="text-gray-600">
+              Page {page} of {totalPages}
+            </span>
+            
+            {hasNextPage ? (
+              <a 
+                href={`/blog?page=${page + 1}`}
+                class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+              >
+                Next
+              </a>
+            ) : (
+              <span class="px-4 py-2 bg-gray-200 text-gray-500 rounded-lg">Next</span>
+            )}
+          </nav>
+        )}
+      </>
+    )}
+  </main>
+</Layout>

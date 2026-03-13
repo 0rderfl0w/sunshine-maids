@@ -167,7 +167,7 @@ const error = Astro.url.searchParams.get('error');
   const form = document.getElementById('post-form') as HTMLFormElement;
 
   // Use the existing browser Supabase client (picks up auth session from cookies)
-  import { createBrowserSupabaseClient } from '../../lib/supabase';
+  import { createBrowserSupabaseClient } from '../../../lib/supabase';
   const supabase = createBrowserSupabaseClient();
 
   coverInput?.addEventListener('change', async () => {

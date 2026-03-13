@@ -240,7 +240,7 @@ if (!post) {
   const coverError = document.getElementById('cover-upload-error') as HTMLParagraphElement;
 
   // Use browser Supabase client (picks up auth session from cookies)
-  import { createBrowserSupabaseClient } from '../../../lib/supabase';
+  import { createBrowserSupabaseClient } from '../../../../lib/supabase';
   const supabase = createBrowserSupabaseClient();
 
   coverInput?.addEventListener('change', async () => {

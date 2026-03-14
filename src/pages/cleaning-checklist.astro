@@ -1,0 +1,296 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const kitchenItems = [
+  { task: "Clean cobwebs from lights, sills", standard: true, deep: true, move: true },
+  { task: "Clean countertops", standard: true, deep: true, move: true },
+  { task: "Dust all lights, ceiling fans & blades", standard: true, deep: true, move: true },
+  { task: "Take out the trash", standard: true, deep: true, move: true },
+  { task: "Dust windows, sills, and ledges", standard: true, deep: true, move: true },
+  { task: "Clean table & chairs", standard: true, deep: true, move: true },
+  { task: "Clean inside and outside of microwave", standard: true, deep: true, move: true },
+  { task: "Clean stove burners; clean stovetop, front & control panels", standard: true, deep: true, move: true },
+  { task: "Clean & dry sink counters & soap dish", standard: true, deep: true, move: true },
+  { task: "Sweep & mop floors", standard: true, deep: true, move: true },
+  { task: "Clean counters & backsplash", standard: true, deep: true, move: true },
+  { task: "Clean front of all cabinets and handles", standard: false, deep: true, move: true },
+  { task: "Clean oven hood vent", standard: false, deep: true, move: true },
+  { task: "Wipe down window sills and window frames", standard: false, deep: true, move: true },
+  { task: "Doors & door frames dusted", standard: false, deep: true, move: true },
+  { task: "Baseboards dusted", standard: false, deep: true, move: true },
+  { task: "Dust & disinfect light switches and door knobs", standard: false, deep: true, move: true },
+  { task: "Baseboards wiped down", standard: false, deep: true, move: true },
+  { task: "Clean inside refrigerator", standard: false, deep: false, move: true },
+  { task: "Clean inside oven", standard: false, deep: false, move: true },
+  { task: "Clean inside cabinets and drawers", standard: false, deep: false, move: true },
+  { task: "Sweep pantry floor and wipe down shelves", standard: false, deep: false, move: true },
+  { task: "Doors and door frames wiped down", standard: false, deep: false, move: true },
+  { task: "Blinds and shutters wet wiped down", standard: false, deep: false, move: true },
+];
+
+const bathroomItems = [
+  { task: "Clean all cobwebs & dust shelves", standard: true, deep: true, move: true },
+  { task: "Clean, buff all mirrors & glass", standard: true, deep: true, move: true },
+  { task: "Clean counter tops & backsplash", standard: true, deep: true, move: true },
+  { task: "Dust all light fixtures & clean sink(s)", standard: true, deep: true, move: true },
+  { task: "Clean & dry shower door, track & glass", standard: true, deep: true, move: true },
+  { task: "Clean & dry sink", standard: true, deep: true, move: true },
+  { task: "Clean inside & outside of the toilet", standard: true, deep: true, move: true },
+  { task: "Empty garbage", standard: true, deep: true, move: true },
+  { task: "Sweep/vacuum & mop floors", standard: true, deep: true, move: true },
+  { task: "Dust & wipe down all window sills, frames & ledges", standard: true, deep: true, move: true },
+  { task: "Cabinet fronts cleaned", standard: true, deep: true, move: true },
+  { task: "Doors, frames dusted & wiped down", standard: true, deep: true, move: true },
+  { task: "Tile grout scrubbed", standard: true, deep: true, move: true },
+  { task: "Dust & wipe down baseboards", standard: false, deep: true, move: true },
+  { task: "Clean inside cabinets", standard: false, deep: false, move: true },
+  { task: "Dust & wipe blinds", standard: false, deep: false, move: true },
+  { task: "Clean inside medicine cabinet", standard: false, deep: false, move: true },
+];
+
+const bedroomItems = [
+  { task: "Clean cobwebs, dust shelves", standard: true, deep: true, move: true },
+  { task: "Dust ceiling fan & blades", standard: true, deep: true, move: true },
+  { task: "Clean & buff mirrors", standard: true, deep: true, move: true },
+  { task: "Dust furniture, lamps, lamp shades & hanging lights", standard: true, deep: true, move: true },
+  { task: "Clean window sills, window frames & chair rails", standard: true, deep: true, move: true },
+  { task: "Vacuum / mop floor", standard: true, deep: true, move: true },
+  { task: "Make beds & change sheets (if clean sheets available)", standard: true, deep: true, move: true },
+  { task: "Clean all light switches & door knobs", standard: true, deep: true, move: true },
+  { task: "Tidy area, fold blankets, arrange pillows, etc.", standard: true, deep: true, move: true },
+  { task: "Empty garbage", standard: true, deep: true, move: true },
+  { task: "Dust window sills & window frames", standard: true, deep: true, move: true },
+  { task: "Doors, frames dusted & wiped down", standard: false, deep: true, move: true },
+  { task: "Dust & wipe down baseboards", standard: false, deep: true, move: true },
+  { task: "Clean closet area", standard: false, deep: false, move: true },
+  { task: "Dust & wipe blinds", standard: false, deep: false, move: true },
+];
+
+const tabs = [
+  { id: "kitchen", label: "Kitchen", count: kitchenItems.length, items: kitchenItems },
+  { id: "bathrooms", label: "Bathrooms", count: bathroomItems.length, items: bathroomItems },
+  { id: "bedrooms", label: "Bedrooms & Common Rooms", count: bedroomItems.length, items: bedroomItems },
+];
+---
+
+<Layout 
+  title="Cleaning Checklist | Guardian Cleaners"
+  description="See exactly what's included in every Guardian Cleaners service. Our detailed cleaning checklist covers Kitchen, Bathrooms, and Bedrooms for Standard, Deep, and Move In/Out cleans."
+  canonical="/cleaning-checklist"
+>
+  <!-- Hero -->
+  <section class="relative py-20 md:py-28 bg-coral">
+    <div class="absolute top-0 left-0 right-0">
+      <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto" style="margin-bottom: -1px;">
+        <path d="M0 60H1440V0C1200 40 960 60 720 30C480 0 240 20 0 50V60Z" fill="white"/>
+      </svg>
+    </div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+      <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">Cleaning Checklist</h1>
+      <p class="text-xl text-white/90 max-w-2xl mx-auto">
+        Explore our detailed cleaning checklist to see how each service ensures a spotless, welcoming home.
+      </p>
+    </div>
+  </section>
+
+  <!-- Legend -->
+  <section class="py-12 md:py-16 bg-white animate-on-scroll">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-10">
+        <p class="text-coral font-semibold uppercase tracking-widest text-sm mb-3">What's Included</p>
+        <h2 class="text-2xl md:text-3xl font-bold text-text mb-4">
+          Compare Our Cleaning Services
+        </h2>
+        <p class="text-text-light max-w-2xl mx-auto">
+          See exactly what tasks are covered in each type of cleaning service. From everyday maintenance to top-to-bottom deep cleans, we've got you covered.
+        </p>
+      </div>
+
+      <!-- Service type legend -->
+      <div class="flex flex-wrap justify-center gap-4 mb-10">
+        <div class="flex items-center gap-2 px-4 py-2 bg-gray-50 rounded-full">
+          <div class="w-3 h-3 rounded-full bg-coral"></div>
+          <span class="text-sm font-medium text-text">Standard Clean</span>
+        </div>
+        <div class="flex items-center gap-2 px-4 py-2 bg-gray-50 rounded-full">
+          <div class="w-3 h-3 rounded-full bg-blue-500"></div>
+          <span class="text-sm font-medium text-text">Deep Clean</span>
+        </div>
+        <div class="flex items-center gap-2 px-4 py-2 bg-gray-50 rounded-full">
+          <div class="w-3 h-3 rounded-full bg-green-500"></div>
+          <span class="text-sm font-medium text-text">Move In/Out</span>
+        </div>
+      </div>
+
+      <!-- Tabs -->
+      <div class="flex flex-wrap justify-center gap-2 mb-8" id="checklist-tabs">
+        {tabs.map((tab, i) => (
+          <button
+            class={`checklist-tab px-6 py-3 rounded-full font-semibold transition-all duration-200 ${i === 0 ? 'bg-coral text-white shadow-lg' : 'bg-gray-100 text-text hover:bg-gray-200'}`}
+            data-tab={tab.id}
+          >
+            {tab.label}
+            <span class={`ml-1.5 text-sm ${i === 0 ? 'text-white/80' : 'text-text-light'}`}>({tab.count})</span>
+          </button>
+        ))}
+      </div>
+
+      <!-- Tab Content -->
+      {tabs.map((tab, i) => (
+        <div 
+          class={`checklist-panel ${i === 0 ? '' : 'hidden'}`} 
+          data-panel={tab.id}
+        >
+          <!-- Desktop Table -->
+          <div class="hidden md:block overflow-hidden rounded-2xl border border-gray-200 shadow-sm">
+            <table class="w-full">
+              <thead>
+                <tr class="bg-gray-50">
+                  <th class="text-left px-6 py-4 text-sm font-semibold text-text">Task</th>
+                  <th class="text-center px-4 py-4 text-sm font-semibold text-coral w-32">Standard</th>
+                  <th class="text-center px-4 py-4 text-sm font-semibold text-blue-600 w-32">Deep</th>
+                  <th class="text-center px-4 py-4 text-sm font-semibold text-green-600 w-32">Move In/Out</th>
+                </tr>
+              </thead>
+              <tbody>
+                {tab.items.map((item, j) => (
+                  <tr class={j % 2 === 0 ? 'bg-white' : 'bg-gray-50/50'}>
+                    <td class="px-6 py-3.5 text-text text-sm">{item.task}</td>
+                    <td class="text-center px-4 py-3.5">
+                      {item.standard 
+                        ? <span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-coral/10 text-coral">✓</span>
+                        : <span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-gray-100 text-gray-300">✗</span>
+                      }
+                    </td>
+                    <td class="text-center px-4 py-3.5">
+                      {item.deep 
+                        ? <span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-blue-50 text-blue-500">✓</span>
+                        : <span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-gray-100 text-gray-300">✗</span>
+                      }
+                    </td>
+                    <td class="text-center px-4 py-3.5">
+                      {item.move 
+                        ? <span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-green-50 text-green-500">✓</span>
+                        : <span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-gray-100 text-gray-300">✗</span>
+                      }
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Mobile Cards -->
+          <div class="md:hidden space-y-3">
+            {tab.items.map((item) => (
+              <div class="bg-white border border-gray-200 rounded-xl p-4 shadow-sm">
+                <p class="text-text font-medium text-sm mb-3">{item.task}</p>
+                <div class="flex gap-2">
+                  <span class={`text-xs px-3 py-1 rounded-full font-medium ${item.standard ? 'bg-coral/10 text-coral' : 'bg-gray-100 text-gray-400 line-through'}`}>
+                    Standard
+                  </span>
+                  <span class={`text-xs px-3 py-1 rounded-full font-medium ${item.deep ? 'bg-blue-50 text-blue-600' : 'bg-gray-100 text-gray-400 line-through'}`}>
+                    Deep
+                  </span>
+                  <span class={`text-xs px-3 py-1 rounded-full font-medium ${item.move ? 'bg-green-50 text-green-600' : 'bg-gray-100 text-gray-400 line-through'}`}>
+                    Move In/Out
+                  </span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+
+      <!-- Summary Note -->
+      <div class="mt-10 bg-gray-50 rounded-2xl p-6 md:p-8 text-center">
+        <p class="text-text-light text-sm">
+          <strong class="text-text">Not sure which service you need?</strong> Our Standard Clean covers everyday maintenance. Choose Deep Clean for a thorough top-to-bottom refresh, or Move In/Out for empty properties that need every surface addressed.
+        </p>
+        <a 
+          href="/contact" 
+          class="inline-block mt-4 text-coral font-semibold hover:text-coral-dark transition-colors"
+        >
+          Contact us for a personalized recommendation →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Wave: white → coral -->
+  <div class="bg-white">
+    <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto block">
+      <path d="M0 40C360 80 720 0 1080 40C1260 60 1380 50 1440 40V80H0V40Z" fill="#E56B6F"/>
+    </svg>
+  </div>
+
+  <!-- CTA -->
+  <section class="py-14 md:py-20 bg-coral">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
+        Book Your Cleaning Service Today
+      </h2>
+      <p class="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
+        Whether you need a standard refresh or a complete deep clean, Guardian Cleaners has you covered.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a 
+          href="tel:+14059774237"
+          class="bg-white text-coral px-8 py-4 rounded-full text-lg font-semibold hover:bg-gray-100 transition-all duration-200 shadow-lg hover:shadow-xl hover:-translate-y-0.5"
+        >
+          Call Now
+        </a>
+        <a 
+          href="/contact"
+          class="border-2 border-white text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white hover:text-coral transition-colors duration-200"
+        >
+          Get a Free Quote
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  // Tab switching
+  document.querySelectorAll('.checklist-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      const targetId = tab.getAttribute('data-tab');
+      
+      // Update tab styles
+      document.querySelectorAll('.checklist-tab').forEach(t => {
+        t.classList.remove('bg-coral', 'text-white', 'shadow-lg');
+        t.classList.add('bg-gray-100', 'text-text', 'hover:bg-gray-200');
+        const count = t.querySelector('span');
+        if (count) {
+          count.classList.remove('text-white/80');
+          count.classList.add('text-text-light');
+        }
+      });
+      tab.classList.remove('bg-gray-100', 'text-text', 'hover:bg-gray-200');
+      tab.classList.add('bg-coral', 'text-white', 'shadow-lg');
+      const activeCount = tab.querySelector('span');
+      if (activeCount) {
+        activeCount.classList.remove('text-text-light');
+        activeCount.classList.add('text-white/80');
+      }
+      
+      // Show/hide panels
+      document.querySelectorAll('.checklist-panel').forEach(panel => {
+        panel.classList.add('hidden');
+      });
+      const target = document.querySelector(`[data-panel="${targetId}"]`);
+      if (target) target.classList.remove('hidden');
+    });
+  });
+
+  // Animate on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+</script>

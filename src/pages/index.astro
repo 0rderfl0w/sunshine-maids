@@ -50,8 +50,20 @@ const services = [
 ];
 
 const serviceAreas = [
-  "Oklahoma City", "Edmond", "Norman", "Bethany", "The Village",
-  "Nichols Hills", "Piedmont", "Yukon", "Del City", "Moore", "Mustang", "Midwest City"
+  { name: "Oklahoma City", href: "/house-cleaning-oklahoma-city" },
+  { name: "Edmond", href: "/cleaning-services-edmond-ok" },
+  { name: "Norman", href: "/cleaning-services-norman-ok" },
+  { name: "Bethany", href: "/cleaning-services-bethany-ok" },
+  { name: "The Village", href: "/cleaning-services-the-village-ok" },
+  { name: "Nichols Hills", href: "/cleaning-services-nichols-hills-ok" },
+  { name: "Piedmont", href: "/cleaning-services-piedmont-ok" },
+  { name: "Yukon", href: "/cleaning-services-yukon-ok" },
+  { name: "Del City", href: "/cleaning-services-del-city-ok" },
+  { name: "Moore", href: "/cleaning-services-moore-ok" },
+  { name: "Mustang", href: "/cleaning-services-mustang-ok" },
+  { name: "Midwest City", href: "/cleaning-services-midwest-city-ok" },
+  { name: "Arcadia", href: "/cleaning-services-arcadia-ok" },
+  { name: "Valley Brook", href: "/cleaning-services-valley-brook-ok" },
 ];
 
 const testimonials = [
@@ -198,9 +210,9 @@ function formatDate(dateStr: string) {
       </div>
       <div class="flex flex-wrap justify-center gap-3">
         {serviceAreas.map(area => (
-          <span class="px-5 py-2.5 bg-coral/10 text-coral rounded-full font-medium border border-coral/20 hover:bg-coral hover:text-white transition-colors duration-200 cursor-default">
-            {area}
-          </span>
+          <a href={area.href} class="px-5 py-2.5 bg-coral/10 text-coral rounded-full font-medium border border-coral/20 hover:bg-coral hover:text-white transition-colors duration-200">
+            {area.name}
+          </a>
         ))}
       </div>
     </div>

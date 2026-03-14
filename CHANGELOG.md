@@ -1,5 +1,26 @@
 # CHANGELOG — Guardian Cleaners Website
 
+## 2026-03-14 (Batch 1 — Area Pages Redesign w/ New Template, Razor & Blade — Subagent)
+- Redesigned 7 flagship area pages using Bethany template structure
+- **Oklahoma City** — `src/pages/house-cleaning-oklahoma-city.astro` — 12 neighborhoods, OKC metro focus
+- **Edmond** — `src/pages/cleaning-services-edmond-ok.astro` — 12 neighborhoods, family-friendly schools callout
+- **Nichols Hills** — `src/pages/cleaning-services-nichols-hills-ok.astro` — 6 neighborhoods, luxury homes emphasis
+- **Norman** — `src/pages/cleaning-services-norman-ok.astro` — 12 neighborhoods, student rental specialist
+- **Piedmont** — `src/pages/cleaning-services-piedmont-ok.astro` — 7 neighborhoods, new construction focus
+- **The Village** — `src/pages/cleaning-services-the-village-ok.astro` — 7 neighborhoods, mid-century homes
+- **Yukon** — `src/pages/cleaning-services-yukon-ok.astro` — 8 neighborhoods, Czech heritage callout
+- All pages now feature:
+  - Split hero: city image left, coral gradient text right with phone/quote buttons
+  - 7 service cards (3+4 grid) with image overlays + hover effects
+  - City-specific intro paragraphs + neighborhoods section
+  - "Why [City] Families Choose Guardian Cleaners" (4-card grid with icons)
+  - FAQ section with area-specific Q&A
+  - Local testimonial with quote + resident name
+  - Full-bleed image CTA (dark overlay, not flat coral) with city-specific header/subheader from city-data.json
+  - Brand coral #E56B6F with rounded-full buttons
+  - LocalBusiness schema with proper areaServed array
+  - Intersection Observer animation on scroll
+
 ## 2026-03-14 (Batch 2 — Area Pages Redesign, Razor & Blade)
 - Redesigned 6 area-specific landing pages using Bethany template structure (split hero layout)
 - **Arcadia** — `src/pages/cleaning-services-arcadia-ok.astro` — 8 neighborhoods, updated CTA

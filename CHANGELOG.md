@@ -1,5 +1,22 @@
 # CHANGELOG — Guardian Cleaners Website
 
+## 2026-03-14 (Batch 2 — Area Pages Redesign, Razor & Blade)
+- Redesigned 6 area-specific landing pages using Bethany template structure (split hero layout)
+- **Arcadia** — `src/pages/cleaning-services-arcadia-ok.astro` — 8 neighborhoods, updated CTA
+- **Del City** — `src/pages/cleaning-services-del-city-ok.astro` — 8 neighborhoods, Tinker AFB callout
+- **Midwest City** — `src/pages/cleaning-services-midwest-city-ok.astro` — 8 neighborhoods, Joe B. Barnes Park
+- **Moore** — `src/pages/cleaning-services-moore-ok.astro` — 8 neighborhoods, Buck Thomas Park
+- **Mustang** — `src/pages/cleaning-services-mustang-ok.astro` — 8 neighborhoods, Wild Horse Park
+- **Valley Brook** — `src/pages/cleaning-services-valley-brook-ok.astro` — 8 neighborhoods, 59th Street Corridor
+- All pages now feature:
+  - Split hero: city image left, coral gradient text right
+  - 7 service cards (3+4 grid) with image overlays
+  - Local testimonials with area-specific callouts
+  - Full-bleed image CTA (dark overlay, not flat coral)
+  - FAQ sections with area-specific content
+  - Brand coral #E56B6F with rounded-full buttons
+  - LocalBusiness schema with city-specific areaServed
+
 ## 2026-03-14 Session 3 — Design Polish & Brand Consistency (Razor & Blade)
 
 ### About Page Overhaul (commits 69dd5ef → 8537179)

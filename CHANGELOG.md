@@ -1,5 +1,37 @@
 # CHANGELOG — Guardian Cleaners Website
 
+## 2026-03-14 Session 3 — Design Polish & Brand Consistency (Razor & Blade)
+
+### About Page Overhaul (commits 69dd5ef → 8537179)
+- Created AI team photo via nano-banana skill (Gemini) — replaced failed SVG attempts
+- Generated AI hero image for About page (full-bleed interior photo)
+- Restructured hero: split layout with team photo right, text left (removed stacked images issue)
+- Made hero shorter (50-55vh) with left-aligned text per user feedback
+- Added coral background to "Our Story" section with white text
+- Added "Our Services" grid below "Why Us" (3+4 layout matching homepage)
+- Added wave dividers between all sections (white↔coral↔gray transitions)
+- Added pill badges for section labels ("About Guardian Cleaners", "Why Us", "Services")
+- Rounded bottom-left corner on hero image
+- Hover effects: card shadow lift, image zoom, button translate-y
+
+### Wave Dividers & Button Polish (commit 8537179)
+- Homepage: wave divider into "Ready for a Spotless Home?" CTA
+- Contact page: wave divider into "Ready to Get Started?" CTA
+- All 7 service pages: wave dividers before CTA sections
+- Button hover effects upgraded across all pages (lift + shadow grow)
+
+### Area SEO Pages Brand Fix (commit 643b161)
+- Fixed wrong coral color (#F56C7E → #E56B6F / Tailwind `bg-coral`) on all 7 area pages
+- Buttons: rounded-lg → rounded-full to match site-wide style
+- Added wave dividers before CTA sections on all area pages
+- Fixed text color classes: gray-900/600 → text/text-light
+- Added hover lift effects to buttons
+- Added scroll animation script
+
+### Deployment
+- Vercel auto-deploy was not triggering from git push — ran `vercel --prod` manually
+- All pages live at guardian-cleaners-website.vercel.app
+
 ## 2026-03-14 (SEO Area Landing Pages - Razor & Blade)
 - Created 5 new area-specific SEO landing pages:
   - `src/pages/cleaning-services-bethany-ok.astro` - Bethany, OK with neighborhoods: Overholser Heights, Rolling Green, Council Heights, Lake Overholser, Westgate, Canyon Park, Sunnymeade, Country Village

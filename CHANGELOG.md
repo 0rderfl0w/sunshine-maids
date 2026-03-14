@@ -1,5 +1,13 @@
 # CHANGELOG — Guardian Cleaners Website
 
+## 2026-03-14 (Session 2 - Polish & Fixes - Razor & Blade)
+- **Scrape & brand analysis:** Downloaded logo.png, hero.jpg, 7 service images, our-story.jpg from original guardian-cleaners.com. Extracted brand colors (#E56B6F coral, #DC373C hover, #6D5455 text) and 5 social media links
+- **Full visual redesign:** Spawned Opus subagent to rewrite Nav, Footer, index, services, about, contact, and global.css — matching original site's professional aesthetic (see detailed entry below)
+- **Hero-services divider removed:** Coral wave SVG between hero and services section created a visible line — removed for clean transition (commit 52cf01f)
+- **Sitemap added:** Installed `@astrojs/sitemap`, added to astro.config.mjs integrations. Auto-generates `/sitemap-index.xml`. Linked in footer under Company column (commit 52cf01f)
+- **Scroll animations verified:** IntersectionObserver with `threshold: 0.1` confirmed working — all 6 animated sections fade in on scroll. Full-page screenshots initially showed blank sections (observer doesn't fire without scroll), but stepped-scroll test confirmed 6/6 visible
+- **Deployment:** All changes deployed via `npx vercel --prod --yes` to guardian-cleaners-website.vercel.app
+
 ## 2026-03-14 (Complete Visual Redesign - Razor & Blade)
 - **global.css:** Added custom theme colors (coral, coral-dark, coral-light, text, text-light), scroll-triggered fade-in animations
 - **Nav.astro:** Logo image instead of text, sticky white header, "Book My Free Estimate" coral pill + phone outlined pill CTAs, responsive hamburger menu

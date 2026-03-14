@@ -12,16 +12,26 @@ const services = [
 ];
 
 const companyLinks = [
-  { label: "Contact", href: "/contact" },
   { label: "About Us", href: "/about" },
+  { label: "Contact", href: "/contact" },
   { label: "Blog", href: "/blog" },
-  { label: "Cleaning Checklist", href: "/blog" },
-  { label: "Sitemap", href: "/sitemap-index.xml" },
+  { label: "FAQ", href: "/faq" },
+];
+
+const legalLinks = [
+  { label: "Privacy Policy", href: "/privacy-policy" },
+  { label: "Terms of Service", href: "/terms-of-service" },
 ];
 
 const areasServed = [
-  "Oklahoma City", "Edmond", "Norman", "Bethany",
-  "The Village", "Nichols Hills", "Piedmont", "Yukon"
+  { name: "Oklahoma City", href: "/house-cleaning-oklahoma-city" },
+  { name: "Edmond", href: "/cleaning-services-edmond-ok" },
+  { name: "Norman", href: "/cleaning-services-norman-ok" },
+  { name: "Bethany", href: "/cleaning-services-bethany-ok" },
+  { name: "The Village", href: "/cleaning-services-the-village-ok" },
+  { name: "Nichols Hills", href: "/cleaning-services-nichols-hills-ok" },
+  { name: "Piedmont", href: "/cleaning-services-piedmont-ok" },
+  { name: "Yukon", href: "/cleaning-services-yukon-ok" },
 ];
 ---
 
@@ -77,6 +87,14 @@ const areasServed = [
             </li>
           ))}
         </ul>
+        <h3 class="text-lg font-bold mb-4 mt-8">Legal</h3>
+        <ul class="space-y-2">
+          {legalLinks.map(link => (
+            <li>
+              <a href={link.href} class="text-white/80 hover:text-white transition-colors">{link.label}</a>
+            </li>
+          ))}
+        </ul>
       </div>
 
       <!-- Column 3: Services -->
@@ -96,7 +114,9 @@ const areasServed = [
         <h3 class="text-lg font-bold mb-4">Areas Served</h3>
         <ul class="space-y-2">
           {areasServed.map(area => (
-            <li class="text-white/80">{area}</li>
+            <li>
+              <a href={area.href} class="text-white/80 hover:text-white transition-colors">{area.name}</a>
+            </li>
           ))}
         </ul>
       </div>

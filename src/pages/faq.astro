@@ -1,0 +1,365 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout 
+  title="FAQ - Guardian Cleaners"
+  description="Frequently asked questions about Guardian Cleaners services in Oklahoma City, Edmond, Norman and surrounding areas. Learn about our cleaning services, pricing, and policies."
+  canonical="/faq"
+>
+  <!-- Hero -->
+  <section class="relative overflow-hidden">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-2 items-center">
+        <!-- Text Side -->
+        <div class="px-6 sm:px-10 lg:px-16 xl:px-20 py-16 md:py-24 order-2 lg:order-1">
+          <span class="inline-block bg-coral/10 text-coral font-semibold uppercase tracking-widest text-xs px-4 py-1.5 rounded-full mb-6">FAQ</span>
+          <h1 class="text-4xl md:text-5xl font-bold text-text mb-5 leading-[1.15]">Frequently Asked Questions</h1>
+          <p class="text-text-light text-lg leading-relaxed mb-8 max-w-md">
+            Have questions about our cleaning services? Find answers below. Can't find what you're looking for? Get in touch!
+          </p>
+          <div class="flex flex-col sm:flex-row gap-3">
+            <a href="/contact" class="bg-coral text-white px-8 py-3.5 rounded-full text-base font-semibold hover:bg-coral-dark transition-all duration-200 shadow-lg hover:shadow-xl hover:-translate-y-0.5 text-center">
+              Contact Us
+            </a>
+            <a href="tel:+14059774237" class="bg-text text-white px-8 py-3.5 rounded-full text-base font-semibold hover:bg-text/80 transition-all duration-200 flex items-center justify-center gap-2">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+              (405) 977-4237
+            </a>
+          </div>
+        </div>
+        <!-- Image Side -->
+        <div class="relative order-1 lg:order-2 min-h-[300px] md:min-h-[400px] lg:min-h-[520px]">
+          <img 
+            src="/images/cleaning-team.png" 
+            alt="Guardian Cleaners team" 
+            class="absolute inset-0 w-full h-full object-cover lg:rounded-bl-[80px]"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Wave: white → coral -->
+  <div class="bg-white">
+    <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto block">
+      <path d="M0 40C360 80 720 0 1080 40C1260 60 1380 50 1440 40V80H0V40Z" fill="#E56B6F"/>
+    </svg>
+  </div>
+
+  <!-- FAQ Section -->
+  <section class="py-14 md:py-20 bg-coral">
+    <div class="max-w-4xl mx-auto px-6 sm:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-white">Your Questions, Answered</h2>
+      </div>
+
+      <!-- General Questions -->
+      <div class="mb-10">
+        <h3 class="text-xl font-bold text-white mb-6 flex items-center gap-2">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>
+          General
+        </h3>
+        
+        <div class="space-y-3">
+          <details class="faq-item bg-white/10 rounded-xl group">
+            <summary class="faq-question flex items-center justify-between cursor-pointer list-none p-5 text-white font-medium">
+              <span>What areas do you serve?</span>
+              <svg class="faq-icon w-5 h-5 text-white/70 group-open:rotate-180 transition-transform duration-200 flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+            </summary>
+            <div class="faq-answer px-5 pb-5 text-white/90 leading-relaxed">
+              <p>We proudly serve the Oklahoma City metro area and surrounding communities within a 35-mile radius, including:</p>
+              <ul class="mt-2 ml-4 list-disc list-inside">
+                <li>Oklahoma City</li>
+                <li>Edmond</li>
+                <li>Norman</li>
+                <li>Bethany</li>
+                <li>The Village</li>
+                <li>Nichols Hills</li>
+                <li>Piedmont</li>
+                <li>Yukon</li>
+              </ul>
+            </div>
+          </details>
+
+          <details class="faq-item bg-white/10 rounded-xl group">
+            <summary class="faq-question flex items-center justify-between cursor-pointer list-none p-5 text-white font-medium">
+              <span>How do I book a cleaning?</span>
+              <svg class="faq-icon w-5 h-5 text-white/70 group-open:rotate-180 transition-transform duration-200 flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+            </summary>
+            <div class="faq-answer px-5 pb-5 text-white/90 leading-relaxed">
+              <p>Booking is easy! You can reach us through any of these methods:</p>
+              <ul class="mt-2 ml-4 list-disc list-inside">
+                <li>Call us directly at (405) 977-4237</li>
+                <li>Fill out our <a href="/contact" class="underline hover:text-white">online contact form</a></li>
+                <li>Send us a message on Telegram</li>
+              </ul>
+              <p class="mt-2">We'll get back to you within 24 hours to confirm your appointment.</p>
+            </div>
+          </details>
+
+          <details class="faq-item bg-white/10 rounded-xl group">
+            <summary class="faq-question flex items-center justify-between cursor-pointer list-none p-5 text-white font-medium">
+              <span>What if I need to cancel or reschedule?</span>
+              <svg class="faq-icon w-5 h-5 text-white/70 group-open:rotate-180 transition-transform duration-200 flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+            </summary>
+            <div class="faq-answer px-5 pb-5 text-white/90 leading-relaxed">
+              <p>We understand that plans change. If you need to cancel or reschedule, please provide at least 24 hours' notice. There's no fee for cancellations made with proper notice.</p>
+              <p class="mt-2">Cancellations with less than 24 hours notice may incur a small fee.</p>
+            </div>
+          </details>
+
+          <details class="faq-item bg-white/10 rounded-xl group">
+            <summary class="faq-question flex items-center justify-between cursor-pointer list-none p-5 text-white font-medium">
+              <span>Do I need to be home during cleaning?</span>
+              <svg class="faq-icon w-5 h-5 text-white/70 group-open:rotate-180 transition-transform duration-200 flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+            </summary>
+            <div class="faq-answer px-5 pb-5 text-white/90 leading-relaxed">
+              <p>Not at all! Many of our clients provide us with a key or access code and head off to work or run errands. We just need a way to access your home.</p>
+              <p class="mt-2">If you prefer to be home, that's completely fine too—we'll work around your schedule.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+
+      <!-- Services Questions -->
+      <div class="mb-10">
+        <h3 class="text-xl font-bold text-white mb-6 flex items-center gap-2">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" /></svg>
+          Services
+        </h3>
+        
+        <div class="space-y-3">
+          <details class="faq-item bg-white/10 rounded-xl group">
+            <summary class="faq-question flex items-center justify-between cursor-pointer list-none p-5 text-white font-medium">
+              <span>What cleaning services do you offer?</span>
+              <svg class="faq-icon w-5 h-5 text-white/70 group-open:rotate-180 transition-transform duration-200 flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+            </summary>
+            <div class="faq-answer px-5 pb-5 text-white/90 leading-relaxed">
+              <p>We offer a comprehensive range of cleaning services:</p>
+              <ul class="mt-2 ml-4 list-disc list-inside">
+                <li>Basic House Cleaning</li>
+                <li>Deep House Cleaning</li>
+                <li>Move-In/Move-Out Cleaning</li>
+                <li>Recurring Maid Services (weekly, biweekly, monthly)</li>
+                <li>Airbnb & Vacation Rental Cleaning</li>
+                <li>Commercial Cleaning</li>
+                <li>Post-Construction Cleaning</li>
+              </ul>
+            </div>
+          </details>
+
+          <details class="faq-item bg-white/10 rounded-xl group">
+            <summary class="faq-question flex items-center justify-between cursor-pointer list-none p-5 text-white font-medium">
+              <span>Do you bring your own supplies and equipment?</span>
+              <svg class="faq-icon w-5 h-5 text-white/70 group-open:rotate-180 transition-transform duration-200 flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+            </summary>
+            <div class="faq-answer px-5 pb-5 text-white/90 leading-relaxed">
+              <p>Yes, absolutely! We bring all necessary cleaning supplies, equipment, and products to your location. You don't need to provide anything—we've got it covered.</p>
+            </div>
+          </details>
+
+          <details class="faq-item bg-white/10 rounded-xl group">
+            <summary class="faq-question flex items-center justify-between cursor-pointer list-none p-5 text-white font-medium">
+              <span>Are your cleaning products safe for kids and pets?</span>
+              <svg class="faq-icon w-5 h-5 text-white/70 group-open:rotate-180 transition-transform duration-200 flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+            </summary>
+            <div class="faq-answer px-5 pb-5 text-white/90 leading-relaxed">
+              <p>Yes! We offer eco-friendly cleaning options that are safe for your children and pets. Just let us know when booking if you'd like us to use green, non-toxic products.</p>
+            </div>
+          </details>
+
+          <details class="faq-item bg-white/10 rounded-xl group">
+            <summary class="faq-question flex items-center justify-between cursor-pointer list-none p-5 text-white font-medium">
+              <span>What's the difference between basic and deep cleaning?</span>
+              <svg class="faq-icon w-5 h-5 text-white/70 group-open:rotate-180 transition-transform duration-200 flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+            </summary>
+            <div class="faq-answer px-5 pb-5 text-white/90 leading-relaxed">
+              <p><strong>Basic Cleaning</strong> includes:</p>
+              <ul class="mt-1 ml-4 list-disc list-inside text-sm">
+                <li>Dusting all surfaces</li>
+                <li>Vacuuming and mopping floors</li>
+                <li>Cleaning bathrooms (toilet, sink, tub/shower)</li>
+                <li>Kitchen cleaning (counters, appliances exterior)</li>
+                <li>Making beds (upon request)</li>
+                <li>Taking out trash</li>
+              </ul>
+              <p class="mt-3"><strong>Deep Cleaning</strong> includes everything in basic plus:</p>
+              <ul class="mt-1 ml-4 list-disc list-inside text-sm">
+                <li>Inside appliances (oven, fridge)</li>
+                <li>Inside cabinets and drawers</li>
+                <li>Baseboards and door frames</li>
+                <li>Light fixtures and ceiling fans</li>
+                <li>Behind furniture</li>
+                <li>Windows (interior)</li>
+                <li>Detailed scrubbing of bathrooms and kitchen</li>
+              </ul>
+            </div>
+          </details>
+        </div>
+      </div>
+
+      <!-- Pricing & Payment Questions -->
+      <div class="mb-10">
+        <h3 class="text-xl font-bold text-white mb-6 flex items-center gap-2">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
+          Pricing & Payment
+        </h3>
+        
+        <div class="space-y-3">
+          <details class="faq-item bg-white/10 rounded-xl group">
+            <summary class="faq-question flex items-center justify-between cursor-pointer list-none p-5 text-white font-medium">
+              <span>How much does a cleaning cost?</span>
+              <svg class="faq-icon w-5 h-5 text-white/70 group-open:rotate-180 transition-transform duration-200 flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+            </summary>
+            <div class="faq-answer px-5 pb-5 text-white/90 leading-relaxed">
+              <p>Pricing depends on several factors:</p>
+              <ul class="mt-2 ml-4 list-disc list-inside">
+                <li>Size of your home (square footage)</li>
+                <li>Type of cleaning (basic, deep, move-in/out)</li>
+                <li>Condition of the space</li>
+                <li>Number of bathrooms</li>
+                <li>Frequency of service</li>
+              </ul>
+              <p class="mt-2">We offer <strong>free estimates</strong>! Contact us for a personalized quote.</p>
+            </div>
+          </details>
+
+          <details class="faq-item bg-white/10 rounded-xl group">
+            <summary class="faq-question flex items-center justify-between cursor-pointer list-none p-5 text-white font-medium">
+              <span>Do you offer discounts for recurring service?</span>
+              <svg class="faq-icon w-5 h-5 text-white/70 group-open:rotate-180 transition-transform duration-200 flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+            </summary>
+            <div class="faq-answer px-5 pb-5 text-white/90 leading-relaxed">
+              <p>Yes! We offer discounted rates for recurring cleaning services:</p>
+              <ul class="mt-2 ml-4 list-disc list-inside">
+                <li>Weekly cleanings — best savings</li>
+                <li>Biweekly cleanings — popular choice</li>
+                <li>Monthly cleanings — great for maintenance</li>
+              </ul>
+              <p class="mt-2">The more regular the service, the better the rate!</p>
+            </div>
+          </details>
+
+          <details class="faq-item bg-white/10 rounded-xl group">
+            <summary class="faq-question flex items-center justify-between cursor-pointer list-none p-5 text-white font-medium">
+              <span>What payment methods do you accept?</span>
+              <svg class="faq-icon w-5 h-5 text-white/70 group-open:rotate-180 transition-transform duration-200 flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+            </summary>
+            <div class="faq-answer px-5 pb-5 text-white/90 leading-relaxed">
+              <p>We accept multiple payment methods for your convenience:</p>
+              <ul class="mt-2 ml-4 list-disc list-inside">
+                <li>Cash</li>
+                <li>Credit/Debit Card</li>
+                <li>Zelle</li>
+                <li>Venmo</li>
+              </ul>
+              <p class="mt-2">Payment is due at the time of service.</p>
+            </div>
+          </details>
+
+          <details class="faq-item bg-white/10 rounded-xl group">
+            <summary class="faq-question flex items-center justify-between cursor-pointer list-none p-5 text-white font-medium">
+              <span>Is there a satisfaction guarantee?</span>
+              <svg class="faq-icon w-5 h-5 text-white/70 group-open:rotate-180 transition-transform duration-200 flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+            </summary>
+            <div class="faq-answer px-5 pb-5 text-white/90 leading-relaxed">
+              <p>Absolutely! Your satisfaction is our top priority. If you're not happy with our service, we'll return and re-clean any areas that don't meet your expectations—at no additional cost.</p>
+              <p class="mt-2">We want you to love your clean home!</p>
+            </div>
+          </details>
+        </div>
+      </div>
+
+      <!-- About the Team Questions -->
+      <div>
+        <h3 class="text-xl font-bold text-white mb-6 flex items-center gap-2">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
+          About the Team
+        </h3>
+        
+        <div class="space-y-3">
+          <details class="faq-item bg-white/10 rounded-xl group">
+            <summary class="faq-question flex items-center justify-between cursor-pointer list-none p-5 text-white font-medium">
+              <span>Are your cleaners background checked?</span>
+              <svg class="faq-icon w-5 h-5 text-white/70 group-open:rotate-180 transition-transform duration-200 flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+            </summary>
+            <div class="faq-answer px-5 pb-5 text-white/90 leading-relaxed">
+              <p>Yes, every cleaner on our team is thoroughly vetted. We conduct comprehensive background checks on all our cleaning professionals to ensure your safety and peace of mind.</p>
+            </div>
+          </details>
+
+          <details class="faq-item bg-white/10 rounded-xl group">
+            <summary class="faq-question flex items-center justify-between cursor-pointer list-none p-5 text-white font-medium">
+              <span>Are you insured?</span>
+              <svg class="faq-icon w-5 h-5 text-white/70 group-open:rotate-180 transition-transform duration-200 flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+            </summary>
+            <div class="faq-answer px-5 pb-5 text-white/90 leading-relaxed">
+              <p>Yes, Guardian Cleaners LLC is fully insured and bonded. This means you're protected in the unlikely event of any damage to your property during our service.</p>
+            </div>
+          </details>
+
+          <details class="faq-item bg-white/10 rounded-xl group">
+            <summary class="faq-question flex items-center justify-between cursor-pointer list-none p-5 text-white font-medium">
+              <span>How long have you been in business?</span>
+              <svg class="faq-icon w-5 h-5 text-white/70 group-open:rotate-180 transition-transform duration-200 flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+            </summary>
+            <div class="faq-answer px-5 pb-5 text-white/90 leading-relaxed">
+              <p>We've been serving the Oklahoma City metro area for years. As a locally owned and operated business, we're proud to be part of this community and look forward to serving you!</p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Wave: coral → white -->
+  <div class="bg-coral">
+    <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto block" style="margin-bottom: -1px;">
+      <path d="M0 40C360 0 720 80 1080 40C1260 20 1380 30 1440 40V80H0V40Z" fill="#f9fafb"/>
+    </svg>
+  </div>
+
+  <!-- CTA -->
+  <section class="py-14 md:py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold text-text mb-4">Still Have Questions?</h2>
+      <p class="text-xl text-text-light mb-8 max-w-2xl mx-auto">
+        We're here to help! Reach out and we'll get back to you within 24 hours.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/contact" class="bg-coral text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-coral-dark transition-all duration-200 shadow-lg hover:shadow-xl hover:-translate-y-0.5">
+          Get In Touch
+        </a>
+        <a href="tel:+14059774237" class="border-2 border-coral text-coral px-8 py-4 rounded-full text-lg font-semibold hover:bg-coral hover:text-white transition-colors duration-200">
+          Call (405) 977-4237
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  details.faq-item > summary {
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  details.faq-item[open] .faq-icon {
+    transform: rotate(180deg);
+  }
+
+  details.faq-item[open] summary ~ .faq-answer {
+    animation: fadeIn 0.3s ease-out;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>

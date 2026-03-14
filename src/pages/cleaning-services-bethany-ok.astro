@@ -1,0 +1,216 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const neighborhoods = [
+  "Overholser Heights",
+  "Rolling Green",
+  "Council Heights",
+  "Lake Overholser",
+  "Westgate",
+  "Canyon Park",
+  "Sunnymeade",
+  "Country Village"
+];
+
+// Bethany-specific schema
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Guardian Cleaners",
+  "telephone": "+1-405-977-4237",
+  "email": "nik@guardian-cleaners.com",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "3129 NW 14th St",
+    "addressLocality": "Oklahoma City",
+    "addressRegion": "OK",
+    "postalCode": "73107"
+  },
+  "areaServed": ["Bethany, OK", ...neighborhoods.map(n => `${n}, Bethany, OK`)],
+  "priceRange": "$$"
+};
+---
+
+<Layout 
+  title="House Cleaning Services in Bethany, OK | Guardian Cleaners"
+  description="Professional house cleaning services in Bethany, OK. Guardian Cleaners serves Overholser Heights, Rolling Green, Lake Overholser, and all Bethany neighborhoods. Book your free estimate today!"
+  canonical="/cleaning-services-bethany-ok"
+  schema={schema}
+>
+  <!-- Hero -->
+  <section class="bg-gradient-to-br from-gray-50 to-white py-16 md:py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mx-auto text-center">
+        <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+          House Cleaning in Bethany, OK
+        </h1>
+        <p class="text-xl text-gray-600 mb-8">
+          Professional residential cleaning services for families across Bethany. From weekly maintenance to deep cleaning, we keep your home spotless so you can focus on what matters.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a 
+            href="tel:+14059774237"
+            class="bg-[#F56C7E] text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-[#e55a6c] transition-colors duration-200 shadow-lg hover:shadow-xl"
+          >
+            Call Now
+          </a>
+          <a 
+            href="/contact"
+            class="border-2 border-[#F56C7E] text-[#F56C7E] px-8 py-4 rounded-lg text-lg font-semibold hover:bg-[#F56C7E] hover:text-white transition-colors duration-200"
+          >
+            Get a Free Quote
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Content -->
+  <section class="py-16 md:py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
+          Your Trusted Bethany House Cleaning Service
+        </h2>
+        
+        <div class="prose prose-lg text-gray-600 mb-10">
+          <p>
+            Bethany, Oklahoma offers that wonderful small-city feel while being just minutes from Oklahoma City. Known for its family-oriented community and proximity to beautiful Lake Overholser, Bethany residents enjoy a unique blend of suburban tranquility and easy access to metro amenities. At Guardian Cleaners, we take pride in serving this welcoming community.
+          </p>
+          <p>
+            Whether you're near the local shops along NW 39th Street or living in one of Bethany's established neighborhoods, our professional cleaning team is ready to help. We understand that Bethany families value their homes as gathering places, and we're here to keep them clean and comfortable so you can enjoy more time with loved ones.
+          </p>
+        </div>
+
+        <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
+          Bethany Neighborhoods We Serve
+        </h2>
+        
+        <p class="text-gray-600 mb-6">
+          We proudly provide house cleaning services to residents across all Bethany communities, including:
+        </p>
+        
+        <div class="flex flex-wrap gap-3 mb-10">
+          {neighborhoods.map(area => (
+            <span class="px-4 py-2 bg-gray-100 text-gray-700 rounded-full">
+              {area}
+            </span>
+          ))}
+        </div>
+
+        <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
+          Why Bethany Families Choose Guardian Cleaners
+        </h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+          <div class="bg-gray-50 p-6 rounded-lg">
+            <div class="w-12 h-12 bg-[#F56C7E] rounded-lg flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+            </div>
+            <h3 class="font-semibold text-gray-900 mb-2">Local Bethany Business</h3>
+            <p class="text-gray-600 text-sm">We're proud to call the Oklahoma City metro home. We know Bethany neighborhoods and work hard to be a part of this community.</p>
+          </div>
+          
+          <div class="bg-gray-50 p-6 rounded-lg">
+            <div class="w-12 h-12 bg-[#F56C7E] rounded-lg flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <h3 class="font-semibold text-gray-900 mb-2">Family-Safe Products</h3>
+            <p class="text-gray-600 text-sm">We use cleaning products that are safe for children and pets. Your family's health and safety come first in every home we clean.</p>
+          </div>
+          
+          <div class="bg-gray-50 p-6 rounded-lg">
+            <div class="w-12 h-12 bg-[#F56C7E] rounded-lg flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+              </svg>
+            </div>
+            <h3 class="font-semibold text-gray-900 mb-2">Insured & Vetted Cleaners</h3>
+            <p class="text-gray-600 text-sm">Every team member is background checked and fully insured. You can trust the people in your Bethany home.</p>
+          </div>
+          
+          <div class="bg-gray-50 p-6 rounded-lg">
+            <div class="w-12 h-12 bg-[#F56C7E] rounded-lg flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+              </svg>
+            </div>
+            <h3 class="font-semibold text-gray-900 mb-2">Satisfaction Guaranteed</h3>
+            <p class="text-gray-600 text-sm">We're not happy unless you're happy. If anything isn't up to your standards, we'll make it right.</p>
+          </div>
+        </div>
+
+        <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
+          Frequently Asked Questions
+        </h2>
+        
+        <div class="space-y-6">
+          <div>
+            <h3 class="font-semibold text-gray-900 mb-2">How much does house cleaning cost in Bethany?</h3>
+            <p class="text-gray-600">Our Bethany cleaning services are priced based on your home's size and the type of cleaning you need. We offer free estimates, so contact us to get a personalized quote.</p>
+          </div>
+          
+          <div>
+            <h3 class="font-semibold text-gray-900 mb-2">Do you offer recurring cleaning for Bethany families?</h3>
+            <p class="text-gray-600">Yes! We offer weekly, bi-weekly, and monthly plans designed around Bethany families' schedules. Regular cleanings keep your home consistently fresh.</p>
+          </div>
+          
+          <div>
+            <h3 class="font-semibold text-gray-900 mb-2">What areas of Bethany do you serve?</h3>
+            <p class="text-gray-600">We serve all Bethany neighborhoods from Overholser Heights and Rolling Green to Lake Overholser and Westgate. If you're in Bethany, we can help.</p>
+          </div>
+          
+          <div>
+            <h3 class="font-semibold text-gray-900 mb-2">Are your cleaning supplies included?</h3>
+            <p class="text-gray-600">Absolutely. We bring everything needed for a thorough clean. Just point us to the areas that need attention, and we'll handle the rest.</p>
+          </div>
+        </div>
+
+        <!-- Local Testimonial Placeholder -->
+        <div class="mt-12 bg-gray-50 p-8 rounded-lg border-l-4 border-[#F56C7E]">
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 bg-[#F56C7E] rounded-full flex items-center justify-center flex-shrink-0">
+              <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+              </svg>
+            </div>
+            <div>
+              <p class="text-gray-600 italic mb-3">"Living near Lake Overholser, we spend a lot of time outdoors with our kids. Coming home to a clean house without lifting a finger has been incredible. Guardian Cleaners treats our Bethany home like it's their own. Highly recommend!"</p>
+              <p class="font-semibold text-gray-900">— Bethany Resident</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 md:py-20 bg-[#F56C7E]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
+        Ready for a Cleaner Bethany Home?
+      </h2>
+      <p class="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
+        Contact Guardian Cleaners today for professional house cleaning services in Bethany, Oklahoma.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a 
+          href="tel:+14059774237"
+          class="bg-white text-[#F56C7E] px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-100 transition-colors duration-200 shadow-lg"
+        >
+          Call Now
+        </a>
+        <a 
+          href="/contact"
+          class="border-2 border-white text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-white hover:text-[#F56C7E] transition-colors duration-200"
+        >
+          Get a Free Quote
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

@@ -1,5 +1,37 @@
 # CHANGELOG — Guardian Cleaners Website
 
+## 2026-03-14 (SEO Area Landing Pages - Razor & Blade)
+- Created 5 new area-specific SEO landing pages:
+  - `src/pages/cleaning-services-bethany-ok.astro` - Bethany, OK with neighborhoods: Overholser Heights, Rolling Green, Council Heights, Lake Overholser, Westgate, Canyon Park, Sunnymeade, Country Village
+  - `src/pages/cleaning-services-the-village-ok.astro` - The Village, OK with neighborhoods: Lakeside, Woodmere Park, Country Lane Estates, Coronado Heights, Canterbury, Village North, Kingsgate
+  - `src/pages/cleaning-services-nichols-hills-ok.astro` - Nichols Hills, OK with neighborhoods: Grand Boulevard, Nichols Hills Park, Nichols Hills Plaza, Crown Heights, Terwilliger Heights, Waverly Park
+  - `src/pages/cleaning-services-piedmont-ok.astro` - Piedmont, OK with neighborhoods: Deer Creek, Piedmont Heights, Country Meadows, Woodcrest, Harvest Hills, Sunset Ridge, Prairie View
+  - `src/pages/cleaning-services-yukon-ok.astro` - Yukon, OK with neighborhoods: Czech Hall, Westborough, Sunset Lake, Lakewood, Silver Crest, Mustang Trail, Somerset, Yukon Hills
+- Each page follows exact template structure from cleaning-services-edmond-ok.astro
+- Includes LocalBusiness schema with area-specific areaServed
+- Neighborhoods displayed as pill tags
+- 4 "Why Choose" cards matching template style
+- 4 FAQs specific to each area
+- Authentic testimonial quotes for each area
+- CTA sections with coral (#F56C7E) background
+- All CTAs link to /contact and tel:+14059774237
+- Canonical URLs set to each page's own path
+
+## 2026-03-14 (Standard Pages + Nav/Footer Updates - Razor & Blade)
+- Created 3 new standard pages:
+  - `src/pages/faq.astro` - FAQ page with accordion-style Q&As grouped by category (General, Services, Pricing & Payment, About the Team), using coral wave design pattern from about.astro, interactive accordion with JS
+  - `src/pages/privacy-policy.astro` - Clean layout privacy policy covering information collected, usage, third-party sharing, cookies, data retention, user rights, contact info
+  - `src/pages/terms-of-service.astro` - Clean layout terms covering service description, booking/cancellation, pricing, liability, property access, damage policy, satisfaction guarantee, governing law (Oklahoma)
+- **Footer.astro updates:**
+  - Updated `companyLinks`: removed "Cleaning Checklist" and "Sitemap", added FAQ link
+  - Added `legalLinks` array with Privacy Policy and Terms of Service
+  - Changed `areasServed` from plain text array to objects with `name` and `href` properties (links to area service pages)
+  - Updated footer template to render areas as links instead of plain text
+  - Added Legal section under Company column
+- **Nav.astro updates:**
+  - Added FAQ to `navLinks` array
+- All business details consistent: Guardian Cleaners LLC, 3129 NW 14th St, OKC, (405) 977-4237, nik@guardian-cleaners.com
+
 ## 2026-03-14 (Service Pages - Razor & Blade)
 - Created 7 individual service pages in `src/pages/services/`:
   - basic-house-cleaning.astro

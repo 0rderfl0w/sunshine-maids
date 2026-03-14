@@ -55,9 +55,19 @@ const serviceAreas = [
 ];
 
 const testimonials = [
-  { name: "Sarah M.", text: "Guardian Cleaners has been amazing! They always leave my home sparkling clean. The team is professional, punctual, and thorough. I couldn't ask for a better cleaning service.", city: "Oklahoma City" },
-  { name: "Michael R.", text: "I've tried many cleaning services in Edmond, but none compare to Guardian Cleaners. They pay attention to every detail and treat my home with such care. Highly recommend!", city: "Edmond" },
-  { name: "Jennifer L.", text: "Finally found a reliable cleaning company! They show up on time, do an incredible job, and their pricing is fair. My go-to for all my cleaning needs in Norman.", city: "Norman" },
+  { name: "LaShonda F.", text: "Nik team did an amazing job with my move out cleaning. (I was way too tired and overwhelmed to do it myself lol). I appreciated Nik's communication and keeping me informed of any changes or delays. I'd highly recommend this company for any cleaning services you may need." },
+  { name: "Dan", text: "Great work, great communication. Have used twice now for deep cleans and will use again in the future!" },
+  { name: "Caleb Ryhne", text: "I've never used a cleaning service before, but after this I'll probably never clean on my own again. Very pleased with the work that was done!" },
+  { name: "John Castro", text: "Great service, really recommend if you're looking to clean your house, great prices really please with the work they do, highly recommended!!" },
+  { name: "Libby Blevins", text: "Used for my Airbnb clean and he did an amazing job. House was spotless and smelled really good!!" },
+  { name: "Michael Warwick", text: "Fantastic service! He's very good attention to detail, very thorough, get your house to looking its best, great customer service, hard-working, very happy with the end result." },
+  { name: "Jon Hoffman", text: "Had a short timeline to get a deep clean before I moved in but they got me in. They did a great job, everything spotless as promised. Will use again for sure." },
+  { name: "Kay Colvin", text: "The cleaning crew was very professional and friendly. They listened to my needs and took care of everything!" },
+  { name: "Julie Burke", text: "Nic and his girls did a great job cleaning my house! I had them do a thorough cleaning. They were professional and paid attention to details. Thank you for helping make my life easier." },
+  { name: "Marko Palibrk", text: "I booked with Guardian Cleaners in Oklahoma City for a deep cleaning, and wow — they seriously knocked it out of the park. My place has never looked this good. They got all the spots I usually miss and made everything feel fresh and brand new." },
+  { name: "LaKeisha Moore", text: "Nik worked by himself from 10 am to 8pm cleaning the house. He did an EXCELLENT JOB! I wish that I could give him hundreds of stars! He was professional, personable, and extremely hardworking. I would 100% recommend this company to anyone needing cleaning services." },
+  { name: "Emi Rudat", text: "Amazing people and cleaners! My husband and I recently moved overseas, Guardian Cleaners made it easy to coordinate with them with over 7 hours of a time difference! The house looks amazing!" },
+  { name: "John Chancey", text: "I couldn't recommend Nik and Guardian Cleaners more. Their service and attention to detail are truly top-notch. They go above and beyond expectations — cleaning parts of your home you probably forgot even existed!" },
 ];
 
 function formatDate(dateStr: string) {
@@ -197,33 +207,58 @@ function formatDate(dateStr: string) {
   </section>
 
   <!-- Testimonials Section -->
-  <section class="py-16 md:py-20 bg-gray-50 animate-on-scroll">
+  <section class="py-16 md:py-20 bg-gray-50 animate-on-scroll overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-12">
-        <p class="text-coral font-semibold uppercase tracking-widest text-sm mb-3">Testimonials</p>
-        <h2 class="text-3xl md:text-4xl font-bold text-text mb-4">What Our Clients Say</h2>
+      <div class="text-center mb-4">
+        <span class="inline-block bg-coral/10 text-coral font-semibold uppercase tracking-widest text-xs px-4 py-1.5 rounded-full mb-4">Testimonials</span>
+        <h2 class="text-3xl md:text-4xl font-bold text-text mb-2">What Our Clients Say</h2>
+        <p class="text-text-light">Real reviews from real customers</p>
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        {testimonials.map(t => (
-          <div class="bg-white rounded-2xl p-8 shadow-md hover:shadow-lg transition-shadow duration-300">
-            <div class="flex items-center mb-5">
-              <div class="w-12 h-12 bg-coral rounded-full flex items-center justify-center text-white font-bold text-lg">
+      <div class="flex items-center justify-center gap-1 mb-10">
+        {[1,2,3,4,5].map(() => (
+          <svg class="w-7 h-7 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+        ))}
+        <span class="ml-2 text-text font-semibold text-lg">5.0</span>
+        <span class="text-text-light ml-1">({testimonials.length} reviews)</span>
+      </div>
+    </div>
+
+    <!-- Scrolling carousel -->
+    <div class="relative" id="testimonial-carousel">
+      <!-- Fade edges -->
+      <div class="absolute left-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-r from-gray-50 to-transparent z-10 pointer-events-none"></div>
+      <div class="absolute right-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-l from-gray-50 to-transparent z-10 pointer-events-none"></div>
+
+      <!-- Track -->
+      <div class="flex gap-6 testimonial-track" style="width: max-content;">
+        {/* Duplicate the set for seamless loop */}
+        {[...testimonials, ...testimonials].map((t, i) => (
+          <div class="w-[340px] md:w-[400px] flex-shrink-0 bg-white rounded-2xl p-7 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1 cursor-default select-none">
+            <div class="flex items-center mb-4">
+              <div class="w-11 h-11 bg-coral rounded-full flex items-center justify-center text-white font-bold text-base flex-shrink-0">
                 {t.name.charAt(0)}
               </div>
-              <div class="ml-4">
-                <p class="font-semibold text-text">{t.name}</p>
-                <p class="text-sm text-text-light">{t.city}</p>
+              <div class="ml-3">
+                <p class="font-semibold text-text text-sm">{t.name}</p>
+                <div class="flex gap-0.5 mt-0.5">
+                  {[1,2,3,4,5].map(() => (
+                    <svg class="w-3.5 h-3.5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                  ))}
+                </div>
               </div>
             </div>
-            <div class="flex gap-0.5 mb-4">
-              {[1,2,3,4,5].map(() => (
-                <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-              ))}
-            </div>
-            <p class="text-text-light italic leading-relaxed">"{t.text}"</p>
+            <p class="text-text-light text-sm leading-relaxed line-clamp-4">"{t.text}"</p>
           </div>
         ))}
       </div>
+    </div>
+
+    <!-- Nav dots / pause -->
+    <div class="flex justify-center mt-8 gap-3">
+      <button id="testimonial-pause" class="text-text-light hover:text-coral transition-colors p-2" aria-label="Pause testimonials">
+        <svg class="w-5 h-5" id="pause-icon" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM7 8a1 1 0 012 0v4a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v4a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd"/></svg>
+        <svg class="w-5 h-5 hidden" id="play-icon" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"/></svg>
+      </button>
     </div>
   </section>
 
@@ -291,6 +326,22 @@ function formatDate(dateStr: string) {
   </section>
 </Layout>
 
+<style>
+  @keyframes scroll-left {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  .testimonial-track {
+    animation: scroll-left 60s linear infinite;
+  }
+  .testimonial-track:hover {
+    animation-play-state: paused;
+  }
+  .testimonial-track.paused {
+    animation-play-state: paused;
+  }
+</style>
+
 <script>
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -299,6 +350,21 @@ function formatDate(dateStr: string) {
       }
     });
   }, { threshold: 0.1 });
-
   document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+
+  // Testimonial carousel pause/play
+  const pauseBtn = document.getElementById('testimonial-pause');
+  const pauseIcon = document.getElementById('pause-icon');
+  const playIcon = document.getElementById('play-icon');
+  const track = document.querySelector('.testimonial-track');
+
+  if (pauseBtn && track) {
+    let isPaused = false;
+    pauseBtn.addEventListener('click', () => {
+      isPaused = !isPaused;
+      track.classList.toggle('paused', isPaused);
+      pauseIcon?.classList.toggle('hidden', isPaused);
+      playIcon?.classList.toggle('hidden', !isPaused);
+    });
+  }
 </script>

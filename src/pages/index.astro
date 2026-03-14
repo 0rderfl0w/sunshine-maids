@@ -40,13 +40,13 @@ try {
 }
 
 const services = [
-  { name: "Basic House Cleaning", image: "/images/basic-house-cleaning.jpg", alt: "Basic house cleaning in Oklahoma City" },
-  { name: "Deep House Cleaning", image: "/images/deep-house-cleaning.jpg", alt: "Deep house cleaning in Oklahoma City" },
-  { name: "Move-In/Move-Out Cleaning", image: "/images/movein-moveout-cleaning.jpg", alt: "Move-in move-out cleaning in Oklahoma City" },
-  { name: "Recurring Maid Services", image: "/images/recurring-maid-services.jpg", alt: "Recurring maid services in Oklahoma City" },
-  { name: "Airbnb Cleaning", image: "/images/airbnb-cleaning.jpg", alt: "Airbnb cleaning in Oklahoma City" },
-  { name: "Commercial Cleaning", image: "/images/commercial-cleaning.jpg", alt: "Commercial cleaning in Oklahoma City" },
-  { name: "Post-Construction Cleaning", image: "/images/post-construction-cleaning.jpg", alt: "Post-construction cleaning in Oklahoma City" },
+  { name: "Basic House Cleaning", href: "/services/basic-house-cleaning", image: "/images/basic-house-cleaning.jpg", alt: "Basic house cleaning in Oklahoma City" },
+  { name: "Deep House Cleaning", href: "/services/deep-house-cleaning", image: "/images/deep-house-cleaning.jpg", alt: "Deep house cleaning in Oklahoma City" },
+  { name: "Move-In/Move-Out Cleaning", href: "/services/move-in-move-out-cleaning", image: "/images/movein-moveout-cleaning.jpg", alt: "Move-in move-out cleaning in Oklahoma City" },
+  { name: "Recurring Maid Services", href: "/services/recurring-maid-services", image: "/images/recurring-maid-services.jpg", alt: "Recurring maid services in Oklahoma City" },
+  { name: "Airbnb Cleaning", href: "/services/airbnb-cleaning", image: "/images/airbnb-cleaning.jpg", alt: "Airbnb cleaning in Oklahoma City" },
+  { name: "Commercial Cleaning", href: "/services/commercial-cleaning", image: "/images/commercial-cleaning.jpg", alt: "Commercial cleaning in Oklahoma City" },
+  { name: "Post-Construction Cleaning", href: "/services/post-construction-cleaning", image: "/images/post-construction-cleaning.jpg", alt: "Post-construction cleaning in Oklahoma City" },
 ];
 
 const serviceAreas = [
@@ -113,22 +113,24 @@ function formatDate(dateStr: string) {
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
         {services.slice(0, 3).map(service => (
-          <a href="/services" class="group relative h-64 rounded-xl overflow-hidden block">
+          <a href={service.href} class="group relative h-64 rounded-xl overflow-hidden block">
             <img src={service.image} alt={service.alt} class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
             <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
             <div class="absolute bottom-0 left-0 right-0 p-6">
               <h3 class="text-white text-xl font-bold">{service.name}</h3>
+              <span class="text-white/80 text-sm font-medium mt-1 inline-block">Learn More →</span>
             </div>
           </a>
         ))}
       </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {services.slice(3).map(service => (
-          <a href="/services" class="group relative h-56 rounded-xl overflow-hidden block">
+          <a href={service.href} class="group relative h-56 rounded-xl overflow-hidden block">
             <img src={service.image} alt={service.alt} class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
             <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
             <div class="absolute bottom-0 left-0 right-0 p-5">
               <h3 class="text-white text-lg font-bold">{service.name}</h3>
+              <span class="text-white/80 text-sm font-medium mt-1 inline-block">Learn More →</span>
             </div>
           </a>
         ))}

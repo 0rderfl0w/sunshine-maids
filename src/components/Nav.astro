@@ -1,9 +1,18 @@
 ---
 const navLinks = [
-  { href: '/services', label: 'Services' },
   { href: '/contact', label: 'Contact' },
   { href: '/about', label: 'About Us' },
   { href: '/blog', label: 'Blog' },
+];
+
+const serviceLinks = [
+  { label: "Basic House Cleaning", href: "/services/basic-house-cleaning" },
+  { label: "Deep House Cleaning", href: "/services/deep-house-cleaning" },
+  { label: "Move-In/Move-Out Cleaning", href: "/services/move-in-move-out-cleaning" },
+  { label: "Recurring Maid Services", href: "/services/recurring-maid-services" },
+  { label: "Airbnb Cleaning", href: "/services/airbnb-cleaning" },
+  { label: "Commercial Cleaning", href: "/services/commercial-cleaning" },
+  { label: "Post-Construction Cleaning", href: "/services/post-construction-cleaning" },
 ];
 ---
 
@@ -17,6 +26,40 @@ const navLinks = [
 
       <!-- Desktop Navigation -->
       <nav class="hidden lg:flex items-center gap-8">
+        <!-- Services Dropdown -->
+        <div class="relative group">
+          <button
+            class="text-text hover:text-coral font-medium transition-colors duration-200 flex items-center gap-1"
+            aria-haspopup="true"
+          >
+            Services
+            <svg class="w-4 h-4 transition-transform duration-200 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          <!-- Dropdown Panel -->
+          <div class="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-64 bg-white rounded-xl shadow-lg border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+            <div class="py-2">
+              {serviceLinks.map(link => (
+                <a
+                  href={link.href}
+                  class="block px-4 py-2.5 text-text hover:text-coral hover:bg-coral/5 transition-colors duration-150 text-sm font-medium"
+                >
+                  {link.label}
+                </a>
+              ))}
+              <div class="border-t border-gray-100 mt-2 pt-2">
+                <a
+                  href="/services"
+                  class="block px-4 py-2.5 text-coral font-semibold text-sm hover:bg-coral/5 transition-colors duration-150"
+                >
+                  View All Services →
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
         {navLinks.map(link => (
           <a
             href={link.href}
@@ -64,6 +107,36 @@ const navLinks = [
   <!-- Mobile Menu -->
   <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-gray-100">
     <div class="px-4 py-6 space-y-3">
+      <!-- Mobile Services Accordion -->
+      <div>
+        <button
+          id="mobile-services-btn"
+          class="flex items-center justify-between w-full text-text hover:text-coral font-medium py-2 transition-colors duration-200"
+          aria-expanded="false"
+        >
+          Services
+          <svg id="mobile-services-chevron" class="w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+        <div id="mobile-services-menu" class="hidden pl-4 mt-1 space-y-1 border-l-2 border-coral/20">
+          {serviceLinks.map(link => (
+            <a
+              href={link.href}
+              class="block text-text-light hover:text-coral text-sm py-1.5 transition-colors duration-150"
+            >
+              {link.label}
+            </a>
+          ))}
+          <a
+            href="/services"
+            class="block text-coral font-semibold text-sm py-1.5"
+          >
+            View All Services →
+          </a>
+        </div>
+      </div>
+
       {navLinks.map(link => (
         <a
           href={link.href}
@@ -105,5 +178,17 @@ const navLinks = [
     mobileMenu?.classList.toggle('hidden');
     menuIcon?.classList.toggle('hidden');
     closeIcon?.classList.toggle('hidden');
+  });
+
+  // Mobile services accordion
+  const servicesBtn = document.getElementById('mobile-services-btn');
+  const servicesMenu = document.getElementById('mobile-services-menu');
+  const servicesChevron = document.getElementById('mobile-services-chevron');
+
+  servicesBtn?.addEventListener('click', () => {
+    const isExpanded = servicesBtn.getAttribute('aria-expanded') === 'true';
+    servicesBtn.setAttribute('aria-expanded', (!isExpanded).toString());
+    servicesMenu?.classList.toggle('hidden');
+    servicesChevron?.classList.toggle('rotate-180');
   });
 </script>

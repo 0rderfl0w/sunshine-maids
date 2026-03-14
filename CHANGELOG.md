@@ -1,5 +1,27 @@
 # CHANGELOG — Guardian Cleaners Website
 
+## 2026-03-14 (Service Pages - Razor & Blade)
+- Created 7 individual service pages in `src/pages/services/`:
+  - basic-house-cleaning.astro
+  - deep-house-cleaning.astro
+  - move-in-move-out-cleaning.astro
+  - recurring-maid-services.astro
+  - airbnb-cleaning.astro
+  - commercial-cleaning.astro
+  - post-construction-cleaning.astro
+- Each page follows coral-themed design pattern: coral hero with wave SVG dividers, service details section with bullet lists, numbered "Our Process" section (3-4 steps), FAQ accordion using `<details>/<summary>`, coral CTA banner
+- All content from reference/service-pages-content.md with proper SEO titles/descriptions and canonical URLs
+- Uses `export const prerender = true` for static generation
+- IntersectionObserver scroll animations included on all pages
+- Build verified: `bun run build` passes ✓
+
+## 2026-03-14 (Session 3 - Nav Dropdown & Service Links - Razor & Blade)
+- **Nav.astro:** Replaced flat "Services" link with hover dropdown (desktop) + accordion (mobile) showing all 7 individual service pages + "View All Services" link
+- **Footer.astro:** Updated all 7 service hrefs from `/services` to individual slugs
+- **index.astro:** Added `href` property to each service object; updated service card `<a>` tags to link to individual pages; added "Learn More →" text to each card
+- **services.astro:** Added `href` property to each service object; updated grid card links to individual pages; added "Learn More →" coral button to each detailed service section; grid anchor links also updated to individual pages
+- Build verified: `bun run build` passes ✓
+
 ## 2026-03-14 (Session 2 - Polish & Fixes - Razor & Blade)
 - **Scrape & brand analysis:** Downloaded logo.png, hero.jpg, 7 service images, our-story.jpg from original guardian-cleaners.com. Extracted brand colors (#E56B6F coral, #DC373C hover, #6D5455 text) and 5 social media links
 - **Full visual redesign:** Spawned Opus subagent to rewrite Nav, Footer, index, services, about, contact, and global.css — matching original site's professional aesthetic (see detailed entry below)

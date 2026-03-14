@@ -39,79 +39,29 @@ try {
   console.error('Error fetching posts:', e);
 }
 
-const hero = {
-  headline: "Expert Cleaning Services for Your Home",
-  subheadline: "Reliable and Local Cleaning for OKC Homes and Business"
-};
-
 const services = [
-  {
-    name: "Basic House Cleaning",
-    description: "Routine cleaning tasks including dusting, vacuuming, scrubbing bathrooms and kitchens",
-    image: "/images/service-basic.jpg",
-    alt: "Basic house cleaning in Oklahoma City, OK — Guardian Cleaners"
-  },
-  {
-    name: "Deep House Cleaning",
-    description: "Thorough cleaning of every nook and cranny including ceiling fans, baseboards, and appliances",
-    image: "/images/service-deep.jpg",
-    alt: "Deep house cleaning in Oklahoma City, OK — Guardian Cleaners"
-  },
-  {
-    name: "Move-In/Move-Out Cleaning",
-    description: "Comprehensive cleaning for moving transitions",
-    image: "/images/service-movein.jpg",
-    alt: "Move-in/move-out cleaning in Oklahoma City, OK — Guardian Cleaners"
-  },
-  {
-    name: "Airbnb Cleaning",
-    description: "Turnaround cleaning for short-term rental properties",
-    image: "/images/service-airbnb.jpg",
-    alt: "Airbnb cleaning in Oklahoma City, OK — Guardian Cleaners"
-  }
+  { name: "Basic House Cleaning", image: "/images/basic-house-cleaning.jpg", alt: "Basic house cleaning in Oklahoma City" },
+  { name: "Deep House Cleaning", image: "/images/deep-house-cleaning.jpg", alt: "Deep house cleaning in Oklahoma City" },
+  { name: "Move-In/Move-Out Cleaning", image: "/images/movein-moveout-cleaning.jpg", alt: "Move-in move-out cleaning in Oklahoma City" },
+  { name: "Recurring Maid Services", image: "/images/recurring-maid-services.jpg", alt: "Recurring maid services in Oklahoma City" },
+  { name: "Airbnb Cleaning", image: "/images/airbnb-cleaning.jpg", alt: "Airbnb cleaning in Oklahoma City" },
+  { name: "Commercial Cleaning", image: "/images/commercial-cleaning.jpg", alt: "Commercial cleaning in Oklahoma City" },
+  { name: "Post-Construction Cleaning", image: "/images/post-construction-cleaning.jpg", alt: "Post-construction cleaning in Oklahoma City" },
 ];
 
 const serviceAreas = [
-  "Oklahoma City",
-  "Edmond",
-  "Norman",
-  "Bethany",
-  "The Village",
-  "Nichols Hills",
-  "Piedmont",
-  "Yukon",
-  "Del City",
-  "Moore",
-  "Mustang",
-  "Midwest City"
+  "Oklahoma City", "Edmond", "Norman", "Bethany", "The Village",
+  "Nichols Hills", "Piedmont", "Yukon", "Del City", "Moore", "Mustang", "Midwest City"
 ];
 
-// Real testimonials from our clients
 const testimonials = [
-  {
-    name: "Sarah M.",
-    text: "Guardian Cleaners has been amazing! They always leave my home sparkling clean. The team is professional, punctual, and thorough. I couldn't ask for a better cleaning service.",
-    city: "Oklahoma City"
-  },
-  {
-    name: "Michael R.",
-    text: "I've tried many cleaning services in Edmond, but none compare to Guardian Cleaners. They pay attention to every detail and treat my home with such care. Highly recommend!",
-    city: "Edmond"
-  },
-  {
-    name: "Jennifer L.",
-    text: "Finally found a reliable cleaning company! They show up on time, do an incredible job, and their pricing is fair. My go-to for all my cleaning needs in Norman.",
-    city: "Norman"
-  }
+  { name: "Sarah M.", text: "Guardian Cleaners has been amazing! They always leave my home sparkling clean. The team is professional, punctual, and thorough. I couldn't ask for a better cleaning service.", city: "Oklahoma City" },
+  { name: "Michael R.", text: "I've tried many cleaning services in Edmond, but none compare to Guardian Cleaners. They pay attention to every detail and treat my home with such care. Highly recommend!", city: "Edmond" },
+  { name: "Jennifer L.", text: "Finally found a reliable cleaning company! They show up on time, do an incredible job, and their pricing is fair. My go-to for all my cleaning needs in Norman.", city: "Norman" },
 ];
 
-// Format date helper
 function formatDate(dateStr: string) {
-  return new Date(dateStr).toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric'
-  });
+  return new Date(dateStr).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
 }
 ---
 
@@ -120,129 +70,162 @@ function formatDate(dateStr: string) {
   description="Guardian Cleaners provides professional residential and commercial cleaning services in Oklahoma City, Edmond, Norman and surrounding areas. Book your free estimate today!"
 >
   <!-- Hero Section -->
-  <section class="relative bg-gradient-to-br from-gray-50 to-white py-16 md:py-24">
-    <div class="absolute inset-0 overflow-hidden">
+  <section class="relative min-h-[600px] md:min-h-[700px] flex items-center">
+    <div class="absolute inset-0">
       <img 
-        src="/images/hero-banner.jpg" 
-        alt="Guardian Cleaners - Professional Cleaning Services"
-        class="w-full h-full object-cover opacity-10"
+        src="/images/hero.jpg" 
+        alt="Clean modern living room — Guardian Cleaners"
+        class="w-full h-full object-cover"
       />
+      <div class="absolute inset-0 bg-black/50"></div>
     </div>
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-      <div class="text-center max-w-3xl mx-auto">
-        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
-          {hero.headline}
-        </h1>
-        <p class="text-xl md:text-2xl text-gray-600 mb-8">
-          {hero.subheadline}
-        </p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a 
-            href="tel:+14059774237"
-            class="bg-[#F56C7E] text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-[#e55a6c] transition-colors duration-200 shadow-lg hover:shadow-xl"
-          >
-            Call Now
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center w-full">
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+        Expert Cleaning Services<br/>for Your Home
+      </h1>
+      <p class="text-xl md:text-2xl text-white/90 mb-10 max-w-2xl mx-auto">
+        Reliable and local cleaning for OKC homes and businesses
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a 
+          href="/contact"
+          class="bg-coral text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-coral-dark transition-colors duration-200 shadow-lg"
+        >
+          Book My Free Estimate
+        </a>
+        <a 
+          href="tel:+14059774237"
+          class="border-2 border-white text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white hover:text-coral transition-colors duration-200"
+        >
+          Call Now (405) 977-4237
+        </a>
+      </div>
+    </div>
+    <!-- Decorative wave -->
+    <div class="absolute bottom-0 left-0 right-0">
+      <svg viewBox="0 0 1440 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto">
+        <path d="M0 60C240 20 480 0 720 40C960 80 1200 60 1440 30V100H0V60Z" fill="white"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section class="py-16 md:py-24 bg-white animate-on-scroll">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-14">
+        <p class="text-coral font-semibold uppercase tracking-widest text-sm mb-3">Services</p>
+        <h2 class="text-3xl md:text-4xl font-bold text-text">Our Expert Cleaning Services</h2>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
+        {services.slice(0, 3).map(service => (
+          <a href="/services" class="group relative h-64 rounded-xl overflow-hidden block">
+            <img src={service.image} alt={service.alt} class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-6">
+              <h3 class="text-white text-xl font-bold">{service.name}</h3>
+            </div>
           </a>
-          <a 
-            href="/contact"
-            class="border-2 border-[#F56C7E] text-[#F56C7E] px-8 py-4 rounded-lg text-lg font-semibold hover:bg-[#F56C7E] hover:text-white transition-colors duration-200"
-          >
-            Get a Free Quote
+        ))}
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {services.slice(3).map(service => (
+          <a href="/services" class="group relative h-56 rounded-xl overflow-hidden block">
+            <img src={service.image} alt={service.alt} class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-5">
+              <h3 class="text-white text-lg font-bold">{service.name}</h3>
+            </div>
           </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Wave divider -->
+  <div class="bg-white">
+    <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto">
+      <path d="M0 40C360 80 720 0 1080 40C1260 60 1380 50 1440 40V80H0V40Z" fill="#E56B6F"/>
+    </svg>
+  </div>
+
+  <!-- Our Story Section -->
+  <section class="bg-coral py-16 md:py-24 animate-on-scroll">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">Our Story</h2>
+          <p class="text-white/90 text-lg leading-relaxed mb-6">
+            At Guardian Cleaners, our roots trace back to Oklahoma City with a heartfelt mission: to help our neighbors across the metro enjoy spotless, healthier homes. From OKC, Edmond, and Norman to Moore and beyond, we're here to transform living and working spaces into immaculate oases.
+          </p>
+          <p class="text-white/90 text-lg leading-relaxed">
+            Our approach is simple yet profound — we don't cut corners, we clean them. By partnering with skilled local cleaners, we provide opportunities that strengthen our community. Experience the warmth and reliability we've been proud to offer, backed by a legacy of integrity and dedication.
+          </p>
+        </div>
+        <div>
+          <img 
+            src="/images/our-story.jpg" 
+            alt="Guardian Cleaners — our story"
+            class="w-full rounded-2xl shadow-xl"
+          />
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Services Summary -->
-  <section class="py-16 md:py-20 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Cleaning Services</h2>
-        <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-          From routine house cleaning to deep cleaning and move-in/move-out services, we've got you covered.
-        </p>
-      </div>
-      
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {services.map(service => (
-          <div class="bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition-shadow duration-300">
-            <div class="w-full h-40 bg-gray-100 overflow-hidden">
-              <img 
-                src={service.image} 
-                alt={service.alt}
-                class="w-full h-full object-cover"
-              />
-            </div>
-            <div class="p-6">
-              <h3 class="text-xl font-semibold text-gray-900 mb-2">{service.name}</h3>
-              <p class="text-gray-600 text-sm">{service.description}</p>
-            </div>
-          </div>
-        ))}
-      </div>
-      
-      <div class="text-center mt-10">
-        <a 
-          href="/services"
-          class="inline-flex items-center text-[#F56C7E] font-semibold hover:underline"
-        >
-          View All Services
-          <svg class="w-5 h-5 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-          </svg>
-        </a>
-      </div>
-    </div>
-  </section>
+  <!-- Wave divider back to white -->
+  <div class="bg-white">
+    <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto block" style="margin-top: -1px;">
+      <path d="M0 0H1440V40C1080 80 720 0 360 40C180 60 60 50 0 40V0Z" fill="#E56B6F"/>
+    </svg>
+  </div>
 
-  <!-- Testimonials -->
-  <section class="py-16 md:py-20 bg-gray-50">
+  <!-- Service Areas Section -->
+  <section class="py-16 md:py-20 bg-white animate-on-scroll">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">What Our Clients Say</h2>
-        <p class="text-lg text-gray-600">
-          Don't just take our word for it — hear from our satisfied customers across the Oklahoma City metro area.
+        <p class="text-coral font-semibold uppercase tracking-widest text-sm mb-3">Locations</p>
+        <h2 class="text-3xl md:text-4xl font-bold text-text mb-4">Proudly Serving the OKC Metro</h2>
+        <p class="text-text-light text-lg max-w-2xl mx-auto">
+          Guardian Cleaners serves residential and commercial clients across the Oklahoma City metropolitan area.
         </p>
       </div>
-      
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {testimonials.map(testimonial => (
-          <div class="bg-white rounded-xl p-6 shadow-sm">
-            <div class="flex items-center mb-4">
-              <div class="w-12 h-12 bg-[#F56C7E] rounded-full flex items-center justify-center text-white font-semibold text-lg">
-                {testimonial.name.charAt(0)}
-              </div>
-              <div class="ml-4">
-                <p class="font-semibold text-gray-900">{testimonial.name}</p>
-                <p class="text-sm text-gray-500">{testimonial.city}</p>
-              </div>
-            </div>
-            <p class="text-gray-600 italic">"{testimonial.text}"</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Service Areas -->
-  <section class="py-16 md:py-20 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Proudly Serving the OKC Metro</h2>
-        <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-          Guardian Cleaners is proud to serve residential and commercial clients across the Oklahoma City metropolitan area.
-        </p>
-      </div>
-      
       <div class="flex flex-wrap justify-center gap-3">
         {serviceAreas.map(area => (
-          <a 
-            href={`/${area.toLowerCase().replace(/\s+/g, '-')}-ok`}
-            class="px-4 py-2 bg-gray-100 text-gray-700 rounded-full hover:bg-[#F56C7E] hover:text-white transition-colors duration-200"
-          >
+          <span class="px-5 py-2.5 bg-coral/10 text-coral rounded-full font-medium border border-coral/20 hover:bg-coral hover:text-white transition-colors duration-200 cursor-default">
             {area}
-          </a>
+          </span>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="py-16 md:py-20 bg-gray-50 animate-on-scroll">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <p class="text-coral font-semibold uppercase tracking-widest text-sm mb-3">Testimonials</p>
+        <h2 class="text-3xl md:text-4xl font-bold text-text mb-4">What Our Clients Say</h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {testimonials.map(t => (
+          <div class="bg-white rounded-2xl p-8 shadow-md hover:shadow-lg transition-shadow duration-300">
+            <div class="flex items-center mb-5">
+              <div class="w-12 h-12 bg-coral rounded-full flex items-center justify-center text-white font-bold text-lg">
+                {t.name.charAt(0)}
+              </div>
+              <div class="ml-4">
+                <p class="font-semibold text-text">{t.name}</p>
+                <p class="text-sm text-text-light">{t.city}</p>
+              </div>
+            </div>
+            <div class="flex gap-0.5 mb-4">
+              {[1,2,3,4,5].map(() => (
+                <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              ))}
+            </div>
+            <p class="text-text-light italic leading-relaxed">"{t.text}"</p>
+          </div>
         ))}
       </div>
     </div>
@@ -250,87 +233,69 @@ function formatDate(dateStr: string) {
 
   <!-- Latest Blog Posts -->
   {latestPosts.length > 0 && (
-    <section class="py-16 md:py-20 bg-gray-50">
+    <section class="py-16 md:py-20 bg-white animate-on-scroll">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-12">
-          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Latest Blog Posts</h2>
-          <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-            Cleaning tips, tricks, and insights from Oklahoma City's premier cleaning service.
-          </p>
+          <p class="text-coral font-semibold uppercase tracking-widest text-sm mb-3">Blog</p>
+          <h2 class="text-3xl md:text-4xl font-bold text-text mb-4">Latest Blog Posts</h2>
         </div>
-        
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
           {latestPosts.map(post => (
-            <article class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow">
+            <article class="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-lg transition-shadow">
               {post.cover_image && (
-                <div class="h-48 bg-gray-200 overflow-hidden">
-                  <img 
-                    src={post.cover_image} 
-                    alt={post.excerpt || post.title}
-                    class="w-full h-full object-cover"
-                  />
+                <div class="h-48 overflow-hidden">
+                  <img src={post.cover_image} alt={post.excerpt || post.title} class="w-full h-full object-cover" />
                 </div>
               )}
               <div class="p-6">
-                <h3 class="text-xl font-semibold text-gray-900 mb-2">
-                  <a href={`/blog/${post.slug}`} class="hover:text-[#F56C7E] transition-colors">
-                    {post.title}
-                  </a>
+                <h3 class="text-xl font-semibold text-text mb-2">
+                  <a href={`/blog/${post.slug}`} class="hover:text-coral transition-colors">{post.title}</a>
                 </h3>
-                <p class="text-gray-600 text-sm mb-4">
+                <p class="text-text-light text-sm mb-4">
                   {post.excerpt ? post.excerpt.substring(0, 100) + '...' : ''}
                 </p>
                 <div class="flex items-center justify-between">
-                  <time datetime={post.published_at} class="text-sm text-gray-500">
-                    {formatDate(post.published_at)}
-                  </time>
-                  <a 
-                    href={`/blog/${post.slug}`}
-                    class="text-[#F56C7E] text-sm font-semibold hover:underline"
-                  >
-                    Read More →
-                  </a>
+                  <time datetime={post.published_at} class="text-sm text-text-light">{formatDate(post.published_at)}</time>
+                  <a href={`/blog/${post.slug}`} class="text-coral text-sm font-semibold hover:underline">Read More →</a>
                 </div>
               </div>
             </article>
           ))}
         </div>
-        
         <div class="text-center mt-10">
-          <a 
-            href="/blog"
-            class="inline-flex items-center text-[#F56C7E] font-semibold hover:underline"
-          >
-            View All Posts →
-          </a>
+          <a href="/blog" class="text-coral font-semibold hover:underline">View All Posts →</a>
         </div>
       </div>
     </section>
   )}
 
   <!-- CTA Banner -->
-  <section class="py-16 md:py-20 bg-[#F56C7E]">
+  <section class="py-16 md:py-20 bg-coral animate-on-scroll">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
-        Ready for a Spotless Home?
-      </h2>
+      <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Ready for a Spotless Home?</h2>
       <p class="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
         Experience the difference of professional cleaning. Book your free estimate today!
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a 
-          href="tel:+14059774237"
-          class="bg-white text-[#F56C7E] px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-100 transition-colors duration-200 shadow-lg"
-        >
-          Call Now
+        <a href="/contact" class="bg-white text-coral px-8 py-4 rounded-full text-lg font-semibold hover:bg-gray-100 transition-colors duration-200 shadow-lg">
+          Book My Free Estimate
         </a>
-        <a 
-          href="/contact"
-          class="border-2 border-white text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-white hover:text-[#F56C7E] transition-colors duration-200"
-        >
-          Get a Free Quote
+        <a href="tel:+14059774237" class="border-2 border-white text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white hover:text-coral transition-colors duration-200">
+          Call Now (405) 977-4237
         </a>
       </div>
     </div>
   </section>
 </Layout>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+</script>

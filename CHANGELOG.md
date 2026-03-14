@@ -1,5 +1,18 @@
 # CHANGELOG — Guardian Cleaners Website
 
+## 2026-03-14 (Complete Visual Redesign - Razor & Blade)
+- **global.css:** Added custom theme colors (coral, coral-dark, coral-light, text, text-light), scroll-triggered fade-in animations
+- **Nav.astro:** Logo image instead of text, sticky white header, "Book My Free Estimate" coral pill + phone outlined pill CTAs, responsive hamburger menu
+- **Footer.astro:** Coral background, all white text, disclaimer, 4-column layout (brand+socials, company, services, areas served), 5 social media SVG icons (Instagram, Facebook, X, YouTube, Pinterest)
+- **index.astro:** Full-width hero with dark overlay + wave SVG divider, 7 image-overlay service cards (3+4 grid), coral "Our Story" section with wave dividers, styled service area pills, testimonials with star ratings + shadows, blog posts section preserved, coral CTA banner, IntersectionObserver scroll animations
+- **services.astro:** Coral hero header with wave, image-overlay card grid, alternating image/text detail sections, brand colors throughout
+- **about.astro:** Coral hero, story section with our-story.jpg, 4 "Why Us" feature cards with coral accents, coral CTA
+- **contact.astro:** Coral hero, redesigned contact info with coral icon containers, Google Maps iframe preserved, service area pills, coral CTA
+- All pages use brand colors (#E56B6F coral, #DC373C dark, #6D5455 text) via Tailwind @theme
+- All images updated to new scraped filenames (basic-house-cleaning.jpg, deep-house-cleaning.jpg, etc.)
+- Rounded-full pill buttons, rounded-xl/2xl cards throughout
+- Mobile-responsive throughout, all images have alt text
+
 ## 2026-03-13 (Image Remap - Razor & Blade)
 - Fix: Service images remapped to match actual content (commit e8c9f7b)
   - Images were scraped from original site with misleading filenames

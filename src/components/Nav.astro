@@ -1,71 +1,94 @@
 ---
 const navLinks = [
-  { href: '/', label: 'Home' },
   { href: '/services', label: 'Services' },
-  { href: '/about', label: 'About' },
+  { href: '/contact', label: 'Contact' },
+  { href: '/about', label: 'About Us' },
   { href: '/blog', label: 'Blog' },
-  { href: '/contact', label: 'Contact' }
 ];
 ---
 
-<header class="bg-white shadow-sm sticky top-0 z-50">
+<header class="bg-white sticky top-0 z-50 shadow-sm">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex justify-between items-center h-16">
+    <div class="flex justify-between items-center h-20">
       <!-- Logo -->
       <a href="/" class="flex items-center">
-        <span class="text-2xl font-bold text-[#F56C7E]">Guardian Cleaners</span>
+        <img src="/images/logo.png" alt="Guardian Cleaners" class="h-12 w-auto" />
       </a>
-      
+
       <!-- Desktop Navigation -->
-      <nav class="hidden md:flex items-center space-x-8">
+      <nav class="hidden lg:flex items-center gap-8">
         {navLinks.map(link => (
-          <a 
+          <a
             href={link.href}
-            class="text-gray-700 hover:text-[#F56C7E] font-medium transition-colors duration-200"
+            class="text-text hover:text-coral font-medium transition-colors duration-200"
           >
             {link.label}
           </a>
         ))}
-        <a 
-          href="tel:+14059774237"
-          class="bg-[#F56C7E] text-white px-4 py-2 rounded-lg font-medium hover:bg-[#e55a6c] transition-colors duration-200"
-        >
-          Call Now
-        </a>
       </nav>
-      
+
+      <!-- Desktop CTAs -->
+      <div class="hidden lg:flex items-center gap-3">
+        <a
+          href="tel:+14059774237"
+          class="inline-flex items-center gap-2 border-2 border-coral text-coral px-5 py-2.5 rounded-full font-semibold hover:bg-coral hover:text-white transition-colors duration-200"
+        >
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+          </svg>
+          (405) 977-4237
+        </a>
+        <a
+          href="/contact"
+          class="bg-coral text-white px-6 py-2.5 rounded-full font-semibold hover:bg-coral-dark transition-colors duration-200"
+        >
+          Book My Free Estimate
+        </a>
+      </div>
+
       <!-- Mobile Menu Button -->
-      <button 
+      <button
         id="mobile-menu-btn"
-        class="md:hidden p-2 text-gray-700 hover:text-[#F56C7E] focus:outline-none focus:ring-2 focus:ring-[#F56C7E] rounded-lg"
+        class="lg:hidden p-2 text-text hover:text-coral focus:outline-none rounded-lg"
         aria-label="Toggle menu"
         aria-expanded="false"
       >
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path class="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
           <path class="close-icon hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
         </svg>
       </button>
     </div>
   </div>
-  
+
   <!-- Mobile Menu -->
-  <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100">
-    <div class="px-4 py-4 space-y-3">
+  <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-gray-100">
+    <div class="px-4 py-6 space-y-3">
       {navLinks.map(link => (
-        <a 
+        <a
           href={link.href}
-          class="block text-gray-700 hover:text-[#F56C7E] font-medium py-2 transition-colors duration-200"
+          class="block text-text hover:text-coral font-medium py-2 transition-colors duration-200"
         >
           {link.label}
         </a>
       ))}
-      <a 
-        href="tel:+14059774237"
-        class="block bg-[#F56C7E] text-white text-center px-4 py-3 rounded-lg font-medium hover:bg-[#e55a6c] transition-colors duration-200"
-      >
-        Call Now
-      </a>
+      <div class="pt-4 space-y-3 border-t border-gray-100">
+        <a
+          href="tel:+14059774237"
+          class="flex items-center justify-center gap-2 border-2 border-coral text-coral px-5 py-3 rounded-full font-semibold"
+        >
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+          </svg>
+          (405) 977-4237
+        </a>
+        <a
+          href="/contact"
+          class="block text-center bg-coral text-white px-6 py-3 rounded-full font-semibold"
+        >
+          Book My Free Estimate
+        </a>
+      </div>
     </div>
   </div>
 </header>
@@ -75,7 +98,7 @@ const navLinks = [
   const mobileMenu = document.getElementById('mobile-menu');
   const menuIcon = menuBtn?.querySelector('.menu-icon');
   const closeIcon = menuBtn?.querySelector('.close-icon');
-  
+
   menuBtn?.addEventListener('click', () => {
     const isExpanded = menuBtn.getAttribute('aria-expanded') === 'true';
     menuBtn.setAttribute('aria-expanded', (!isExpanded).toString());

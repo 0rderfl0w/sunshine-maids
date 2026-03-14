@@ -162,14 +162,21 @@ const serviceAreas = [
     </div>
   </section>
 
+  <!-- Wave: gray → coral -->
+  <div class="bg-gray-50">
+    <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto block">
+      <path d="M0 40C360 80 720 0 1080 40C1260 60 1380 50 1440 40V80H0V40Z" fill="#E56B6F"/>
+    </svg>
+  </div>
+
   <!-- CTA -->
-  <section class="py-16 md:py-20 bg-coral animate-on-scroll">
+  <section class="py-14 md:py-20 bg-coral">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
       <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Ready to Get Started?</h2>
       <p class="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
         Call us today for a free quote on any of our cleaning services.
       </p>
-      <a href={`tel:${business.phoneLink}`} class="inline-block bg-white text-coral px-8 py-4 rounded-full text-lg font-semibold hover:bg-gray-100 transition-colors duration-200 shadow-lg">
+      <a href={`tel:${business.phoneLink}`} class="inline-block bg-white text-coral px-8 py-4 rounded-full text-lg font-semibold hover:bg-gray-100 transition-all duration-200 shadow-lg hover:shadow-xl hover:-translate-y-0.5">
         {business.phone}
       </a>
     </div>

@@ -15,6 +15,7 @@ const staticPages = [
   { url: '/house-cleaning-austin-tx', priority: '0.8', changefreq: 'monthly' },
   { url: '/cleaning-services-round-rock-tx', priority: '0.8', changefreq: 'monthly' },
   { url: '/cleaning-services-cedar-park-tx', priority: '0.8', changefreq: 'monthly' },
+  { url: '/cleaning-services-pflugerville-tx', priority: '0.8', changefreq: 'monthly' },
 ];
 
 export async function GET({ cookies }: APIContext) {

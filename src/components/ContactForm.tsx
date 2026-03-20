@@ -179,7 +179,7 @@ export default function ContactForm() {
 
       <p className="text-xs text-gray-400 text-center">
         Or call us directly at{' '}
-        <a href="tel:+14059774237" className="text-[#E56B6F] font-medium hover:underline">
+        <a href="tel:+15125550147" className="text-[#E56B6F] font-medium hover:underline">
           (512) 555-0147
         </a>
       </p>

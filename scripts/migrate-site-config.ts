@@ -83,8 +83,8 @@ async function migrate() {
     
     const seedData = [
       { key: 'phone', value: '(512) 555-0147' },
-      { key: 'email', value: 'nick@sunshine-maids.com' },
-      { key: 'address', value: '4800 N Lincoln Blvd, Austin, TX 73105' },
+      { key: 'email', value: 'hello@sunshinemaids.com' },
+      { key: 'address', value: '1847 South Lamar Blvd, Austin, TX 78704' },
       { key: 'business_hours', value: 'Mon-Fri 8am-6pm, Sat 9am-4pm' },
       { key: 'service_areas', value: 'Austin, Round Rock, Cedar Park, Pflugerville, Georgetown, Bee Cave, Lakeway, Kyle, Buda' }
     ];

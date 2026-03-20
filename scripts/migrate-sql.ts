@@ -3,7 +3,7 @@
  * Run with: bun scripts/migrate-sql.ts
  */
 
-const SUPABASE_URL = 'https://cmpdoonysjbnjlykwwyg.supabase.co';
+const SUPABASE_URL = 'https://your-project-id.supabase.co';
 const SERVICE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
 if (!SERVICE_KEY) {

@@ -41,4 +41,4 @@
 
 ## Need Help?
 
-Contact Richard at richard@richkapp.com
+Contact us at hello@sunshinemaids.com

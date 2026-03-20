@@ -5,7 +5,7 @@
  * Creates:
  * - posts table with RLS policies
  * - blog-images storage bucket
- * - Admin user (richard@richkapp.com)
+ * - Admin user (hello@sunshinemaids.com)
  */
 
 import { createClient } from '@supabase/supabase-js';
@@ -144,7 +144,7 @@ async function migrate() {
     // 4. Create admin user
     console.log('Creating admin user...');
     
-    const adminEmail = 'richard@richkapp.com';
+    const adminEmail = 'hello@sunshinemaids.com';
     const tempPassword = 'SunshineAdmin2026!' // Temporary - user will change
     
     const { data: userData, error: userError } = await supabase.auth.admin.createUser({
@@ -174,7 +174,7 @@ async function migrate() {
     console.log('- Posts table ready');
     console.log('- RLS policies active');
     console.log('- Storage bucket ready');
-    console.log('- Admin user ready (email: richard@richkapp.com)');
+    console.log('- Admin user ready (email: hello@sunshinemaids.com)');
     
   } catch (error) {
     console.error('Migration failed:', error);

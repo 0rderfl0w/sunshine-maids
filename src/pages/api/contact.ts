@@ -29,8 +29,8 @@ export const POST: APIRoute = async ({ request }) => {
 
     // Send email to Nick via Resend
     const { data, error } = await resend.emails.send({
-      from: 'Guardian Cleaners Website <noreply@guardian-cleaners.com>',
-      to: ['nik@guardian-cleaners.com'],
+      from: 'Sunshine Maids Website <noreply@sunshine-maids.com>',
+      to: ['hello@sunshinemaids.com'],
       replyTo: email,
       subject: `New Contact Form: ${name}${service ? ` — ${service}` : ''}`,
       html: `
@@ -67,7 +67,7 @@ export const POST: APIRoute = async ({ request }) => {
             </div>
           </div>
           <p style="text-align: center; color: #9ca3af; font-size: 12px; margin-top: 16px;">
-            Sent from the Guardian Cleaners website contact form
+            Sent from the Sunshine Maids website contact form
           </p>
         </div>
       `,

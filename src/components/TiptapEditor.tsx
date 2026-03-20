@@ -12,7 +12,7 @@ export default function TiptapEditor({ initialContent = '', postId = 'new', hidd
   const [draftSaved, setDraftSaved] = useState(false);
   
   // Get draft key based on post ID
-  const getDraftKey = () => `guardian-draft-${postId}`;
+  const getDraftKey = () => `sunshine-draft-${postId}`;
   
   // Restore from localStorage if initialContent is empty
   const getInitialContent = () => {

@@ -180,7 +180,7 @@ export default function ContactForm() {
       <p className="text-xs text-gray-400 text-center">
         Or call us directly at{' '}
         <a href="tel:+14059774237" className="text-[#E56B6F] font-medium hover:underline">
-          (405) 977-4237
+          (512) 555-0147
         </a>
       </p>
     </form>

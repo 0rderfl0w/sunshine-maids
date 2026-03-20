@@ -71,11 +71,11 @@ const jsonLd = {
   "dateModified": post.updated_at,
   "author": {
     "@type": "Organization",
-    "name": "Guardian Cleaners"
+    "name": "Sunshine Maids"
   },
   "publisher": {
     "@type": "Organization",
-    "name": "Guardian Cleaners",
+    "name": "Sunshine Maids",
     "logo": {
       "@type": "ImageObject",
       "url": "/images/og-default.jpg"
@@ -85,7 +85,7 @@ const jsonLd = {
 ---
 
 <Layout
-  title={`${post.title} | Guardian Cleaners Blog`}
+  title={`${post.title} | Sunshine Maids Blog`}
   description={post.excerpt || post.body_html?.replace(/<[^>]*>/g, '').substring(0, 150)}
   ogImage={post.cover_image}
 >

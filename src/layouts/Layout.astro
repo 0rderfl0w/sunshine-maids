@@ -15,7 +15,7 @@ interface Props {
 
 const {
   title,
-  description = 'Guardian Cleaners - Professional residential and commercial cleaning services in Oklahoma City, Edmond, and Norman.',
+  description = 'Sunshine Maids - Professional residential and commercial cleaning services in Austin, Round Rock, and Cedar Park.',
   canonical,
   ogImage = '/og-default.jpg',
   ogType = 'website',
@@ -28,17 +28,17 @@ const canonicalUrl = canonical ? new URL(canonical, Astro.site).toString() : new
 const defaultSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
-  "name": "Guardian Cleaners",
-  "telephone": "+1-405-977-4237",
-  "email": "nik@guardian-cleaners.com",
+  "name": "Sunshine Maids",
+  "telephone": "+1-512-555-0147",
+  "email": "hello@sunshinemaids.com",
   "address": {
     "@type": "PostalAddress",
-    "streetAddress": "3129 NW 14th St",
-    "addressLocality": "Oklahoma City",
-    "addressRegion": "OK",
-    "postalCode": "73107"
+    "streetAddress": "1847 South Lamar Blvd",
+    "addressLocality": "Austin",
+    "addressRegion": "TX",
+    "postalCode": "78704"
   },
-  "areaServed": ["Oklahoma City, OK", "Edmond, OK", "Norman, OK"],
+  "areaServed": ["Austin, TX", "Round Rock, TX", "Cedar Park, TX", "Pflugerville, TX"],
   "priceRange": "$$"
 };
 

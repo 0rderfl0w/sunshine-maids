@@ -1,14 +1,14 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-const city = "Oklahoma City";
-const state = "OK";
-const heroImage = "/images/cities/oklahoma-city.jpg";
+const city = "Austin";
+const state = "TX";
+const heroImage = "/images/cities/austin-tx.jpg";
 const ctaHeader = "Schedule Your Sparkling Clean Today!";
-const ctaSubheader = "Experience the results that only Guardian Cleaners can provide. Our professional cleaners are ready to transform your home into a haven.";
+const ctaSubheader = "Experience the results that only Sunshine Maids can provide. Our professional cleaners are ready to transform your home into a haven.";
 
 const neighborhoods = [
-  "Nichols Hills",
+  "Tarrytown",
   "Midtown",
   "Bricktown",
   "Heritage Hills",
@@ -35,15 +35,15 @@ const services = [
 const schema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
-  "name": "Guardian Cleaners",
-  "telephone": "+1-405-977-4237",
-  "email": "nik@guardian-cleaners.com",
+  "name": "Sunshine Maids",
+  "telephone": "+1-512-555-0147",
+  "email": "hello@sunshinemaids.com",
   "address": {
     "@type": "PostalAddress",
-    "streetAddress": "3129 NW 14th St",
-    "addressLocality": "Oklahoma City",
-    "addressRegion": "OK",
-    "postalCode": "73107"
+    "streetAddress": "1847 South Lamar Blvd",
+    "addressLocality": "Austin",
+    "addressRegion": "TX",
+    "postalCode": "78704"
   },
   "areaServed": [`${city}, ${state}`, ...neighborhoods.map(n => `${n}, ${city}, ${state}`)],
   "priceRange": "$$"
@@ -51,9 +51,9 @@ const schema = {
 ---
 
 <Layout 
-  title={`House Cleaning Services in ${city}, ${state} | Guardian Cleaners`}
-  description={`Professional house cleaning services in ${city}, ${state}. Guardian Cleaners serves ${neighborhoods.slice(0, 3).join(', ')}, and all ${city} neighborhoods. Book your free estimate today!`}
-  canonical={`/house-cleaning-oklahoma-city`}
+  title={`House Cleaning Services in ${city}, ${state} | Sunshine Maids`}
+  description={`Professional house cleaning services in ${city}, ${state}. Sunshine Maids serves ${neighborhoods.slice(0, 3).join(', ')}, and all ${city} neighborhoods. Book your free estimate today!`}
+  canonical={`/house-cleaning-austin-tx`}
   schema={schema}
 >
   <!-- Hero: Split layout with city image -->
@@ -64,7 +64,7 @@ const schema = {
         <div class="relative h-64 md:h-auto order-2 md:order-1">
           <img 
             src={heroImage} 
-            alt={`${city}, Oklahoma`}
+            alt={`${city}, Texas`}
             class="absolute inset-0 w-full h-full object-cover"
           />
         </div>
@@ -81,7 +81,7 @@ const schema = {
               href="tel:+14059774237"
               class="bg-white text-coral px-8 py-4 rounded-full text-lg font-semibold hover:bg-gray-100 transition-all duration-200 shadow-lg hover:shadow-xl hover:-translate-y-0.5 text-center"
             >
-              Call (405) 977-4237
+              Call (512) 555-0147
             </a>
             <a 
               href="/contact"
@@ -141,10 +141,10 @@ const schema = {
         
         <div class="prose prose-lg text-text-light mb-10">
           <p>
-            Guardian Cleaners has been serving Oklahoma City residents with professional house cleaning services for years. We understand that your home is your sanctuary, and maintaining a clean living space is essential for your health and wellbeing. Whether you need a one-time deep clean or recurring maintenance, our team of experienced cleaning professionals is dedicated to delivering exceptional results.
+            Sunshine Maids has been serving Austin residents with professional house cleaning services for years. We understand that your home is your sanctuary, and maintaining a clean living space is essential for your health and wellbeing. Whether you need a one-time deep clean or recurring maintenance, our team of experienced cleaning professionals is dedicated to delivering exceptional results.
           </p>
           <p>
-            Oklahoma City residents trust Guardian Cleaners because we treat every home as if it were our own. Our attention to detail and commitment to customer satisfaction has made us one of the most recommended cleaning services in the metro area. We use proven cleaning techniques and quality products to ensure your home sparkles from room to room.
+            Austin residents trust Sunshine Maids because we treat every home as if it were our own. Our attention to detail and commitment to customer satisfaction has made us one of the most recommended cleaning services in the metro area. We use proven cleaning techniques and quality products to ensure your home sparkles from room to room.
           </p>
         </div>
 
@@ -165,7 +165,7 @@ const schema = {
         </div>
 
         <h2 class="text-2xl md:text-3xl font-bold text-text mb-6">
-          Why {city} Families Choose Guardian Cleaners
+          Why {city} Families Choose Sunshine Maids
         </h2>
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
@@ -176,7 +176,7 @@ const schema = {
               </svg>
             </div>
             <h3 class="font-semibold text-text mb-2">Local {city} Business</h3>
-            <p class="text-text-light text-sm">We're proud to call the Oklahoma City metro home. We know {city} neighborhoods and work hard to be a part of this community.</p>
+            <p class="text-text-light text-sm">We're proud to call the Austin metro home. We know {city} neighborhoods and work hard to be a part of this community.</p>
           </div>
           
           <div class="bg-white p-6 rounded-xl shadow-sm hover:-translate-y-0.5 transition-all duration-200">
@@ -245,8 +245,8 @@ const schema = {
               </svg>
             </div>
             <div>
-              <p class="text-text-light italic mb-3">"Guardian Cleaners has been keeping our Oklahoma City home spotless for years. Their attention to detail is incredible, and they always show up on time. Whether we're in Nichols Hills or downtown, they treat every room like it's their own. Couldn't recommend them more highly!"</p>
-              <p class="font-semibold text-text">— Oklahoma City Resident</p>
+              <p class="text-text-light italic mb-3">"Sunshine Maids has been keeping our Austin home spotless for years. Their attention to detail is incredible, and they always show up on time. Whether we're in Tarrytown or downtown, they treat every room like it's their own. Couldn't recommend them more highly!"</p>
+              <p class="font-semibold text-text">— Austin Resident</p>
             </div>
           </div>
         </div>

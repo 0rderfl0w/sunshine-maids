@@ -145,7 +145,7 @@ async function migrate() {
     console.log('Creating admin user...');
     
     const adminEmail = 'richard@richkapp.com';
-    const tempPassword = 'GuardianAdmin2026!' // Temporary - user will change
+    const tempPassword = 'SunshineAdmin2026!' // Temporary - user will change
     
     const { data: userData, error: userError } = await supabase.auth.admin.createUser({
       email: adminEmail,

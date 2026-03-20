@@ -1,4 +1,4 @@
-# Audit Log: Guardian Cleaners Website
+# Audit Log: Sunshine Maids Website
 
 ## Status
 - [x] No critical issues
@@ -132,7 +132,7 @@
 | Vercel env vars not listed | Full env var table added |
 | Bun on Vercel undocumented | `vercel.json` with explicit commands |
 | Storage bucket case sensitivity | Explicit lowercase names + gotcha documented |
-| localStorage multi-tab clobber | Key structure: `guardian-draft-{postId}` per post |
+| localStorage multi-tab clobber | Key structure: `sunshine-draft-{postId}` per post |
 | Password reset not mentioned | Supabase built-in flow + SMTP config |
 | No mobile nav pattern | Hamburger menu at mobile breakpoints |
 | cover_image_alt nullable but "required" | DB constraint: alt required when cover_image exists |

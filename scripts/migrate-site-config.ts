@@ -82,11 +82,11 @@ async function migrate() {
     console.log('Seeding initial values...');
     
     const seedData = [
-      { key: 'phone', value: '(405) 977-4237' },
-      { key: 'email', value: 'nick@guardian-cleaners.com' },
-      { key: 'address', value: '4800 N Lincoln Blvd, Oklahoma City, OK 73105' },
+      { key: 'phone', value: '(512) 555-0147' },
+      { key: 'email', value: 'nick@sunshine-maids.com' },
+      { key: 'address', value: '4800 N Lincoln Blvd, Austin, TX 73105' },
       { key: 'business_hours', value: 'Mon-Fri 8am-6pm, Sat 9am-4pm' },
-      { key: 'service_areas', value: 'Oklahoma City, Edmond, Norman, Yukon, Mustang, Moore, Midwest City, Del City, Choctaw, Nichols Hills' }
+      { key: 'service_areas', value: 'Austin, Round Rock, Cedar Park, Pflugerville, Georgetown, Bee Cave, Lakeway, Kyle, Buda' }
     ];
     
     for (const item of seedData) {

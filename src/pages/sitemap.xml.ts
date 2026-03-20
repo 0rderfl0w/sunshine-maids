@@ -4,7 +4,7 @@ export const prerender = false;
 import type { APIContext } from 'astro';
 import { createServerClient } from '@supabase/ssr';
 
-const siteUrl = 'https://guardian-cleaners-website.vercel.app';
+const siteUrl = 'https://sunshine-maids-website.vercel.app';
 
 // Static pages
 const staticPages = [
@@ -12,9 +12,9 @@ const staticPages = [
   { url: '/about', priority: '0.8', changefreq: 'monthly' },
   { url: '/services', priority: '0.8', changefreq: 'monthly' },
   { url: '/contact', priority: '0.8', changefreq: 'monthly' },
-  { url: '/house-cleaning-oklahoma-city', priority: '0.8', changefreq: 'monthly' },
-  { url: '/cleaning-services-edmond-ok', priority: '0.8', changefreq: 'monthly' },
-  { url: '/cleaning-services-norman-ok', priority: '0.8', changefreq: 'monthly' },
+  { url: '/house-cleaning-austin-tx', priority: '0.8', changefreq: 'monthly' },
+  { url: '/cleaning-services-round-rock-tx', priority: '0.8', changefreq: 'monthly' },
+  { url: '/cleaning-services-cedar-park-tx', priority: '0.8', changefreq: 'monthly' },
 ];
 
 export async function GET({ cookies }: APIContext) {

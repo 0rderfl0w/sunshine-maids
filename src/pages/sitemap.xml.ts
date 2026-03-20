@@ -4,7 +4,7 @@ export const prerender = false;
 import type { APIContext } from 'astro';
 import { createServerClient } from '@supabase/ssr';
 
-const siteUrl = 'https://sunshine-maids-website.vercel.app';
+const siteUrl = 'https://sunshinemaids.com';
 
 // Static pages
 const staticPages = [
@@ -12,10 +12,22 @@ const staticPages = [
   { url: '/about', priority: '0.8', changefreq: 'monthly' },
   { url: '/services', priority: '0.8', changefreq: 'monthly' },
   { url: '/contact', priority: '0.8', changefreq: 'monthly' },
+  { url: '/faq', priority: '0.7', changefreq: 'monthly' },
+  { url: '/blog', priority: '0.8', changefreq: 'weekly' },
+  { url: '/cleaning-checklist', priority: '0.6', changefreq: 'monthly' },
+  { url: '/privacy-policy', priority: '0.3', changefreq: 'yearly' },
+  { url: '/terms-of-service', priority: '0.3', changefreq: 'yearly' },
   { url: '/house-cleaning-austin-tx', priority: '0.8', changefreq: 'monthly' },
   { url: '/cleaning-services-round-rock-tx', priority: '0.8', changefreq: 'monthly' },
   { url: '/cleaning-services-cedar-park-tx', priority: '0.8', changefreq: 'monthly' },
   { url: '/cleaning-services-pflugerville-tx', priority: '0.8', changefreq: 'monthly' },
+  { url: '/services/basic-house-cleaning', priority: '0.7', changefreq: 'monthly' },
+  { url: '/services/deep-house-cleaning', priority: '0.7', changefreq: 'monthly' },
+  { url: '/services/recurring-maid-services', priority: '0.7', changefreq: 'monthly' },
+  { url: '/services/move-in-move-out-cleaning', priority: '0.7', changefreq: 'monthly' },
+  { url: '/services/airbnb-cleaning', priority: '0.7', changefreq: 'monthly' },
+  { url: '/services/commercial-cleaning', priority: '0.7', changefreq: 'monthly' },
+  { url: '/services/post-construction-cleaning', priority: '0.7', changefreq: 'monthly' },
 ];
 
 export async function GET({ cookies }: APIContext) {

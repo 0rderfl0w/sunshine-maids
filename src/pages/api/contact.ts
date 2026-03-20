@@ -27,7 +27,7 @@ export const POST: APIRoute = async ({ request }) => {
       );
     }
 
-    // Send email to Nick via Resend
+    // Send email via Resend
     const { data, error } = await resend.emails.send({
       from: 'Sunshine Maids Website <noreply@sunshine-maids.com>',
       to: ['hello@sunshinemaids.com'],

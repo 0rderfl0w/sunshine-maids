@@ -6,7 +6,7 @@ import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
   output: 'static',
-  site: 'https://guardian-cleaners.com',
+  site: 'https://sunshinemaids.com',
   adapter: vercel(),
   integrations: [react(), sitemap()],
   vite: {
